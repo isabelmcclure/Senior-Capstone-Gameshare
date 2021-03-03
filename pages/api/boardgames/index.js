@@ -1,6 +1,7 @@
 import dbConnect from '../../../util/dbConnect'
 import Boardgame from '../../../models/boardgame'
 
+dbConnect();
 
 export default async (req, res) => {
 
@@ -29,14 +30,3 @@ export default async (req, res) => {
     }
 }
 
-export async function getServerSideProps() {
-    //await connectToDatabase();
-    const resp = await dbConnect()
-
-    return {
-        if(resp) {
-            console.log("true");
-        }
-    }
-
-}
