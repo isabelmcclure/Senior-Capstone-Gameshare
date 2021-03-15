@@ -1,14 +1,26 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import dbConnect from '../util/dbConnect'
 
 export default function Home() {
   return (
+
     <div className={styles.container}>
       <Head>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+          if (document.cookie && document.cookie.includes('authed')) {
+            window.location.href = "/dashboard"
+          }
+        ` }} />
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+
+      <Link href="/login"><a>Login</a></Link>
+
 
       <main className={styles.main}>
         <h1 className={styles.title}>
