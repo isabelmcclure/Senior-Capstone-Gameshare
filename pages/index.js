@@ -5,7 +5,7 @@ import dbConnect from '../util/dbConnect'
 export default function Home() {
   return (
     <div className="content">
-        <h1>Placeholder</h1>
+        <h1>Landing Page</h1>
     </div>
   )
 }

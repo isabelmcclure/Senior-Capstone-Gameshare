@@ -1,23 +1,35 @@
 import Link from 'next/link'
 
 const Navbar = () => {
-    return ( 
-        <nav>
-            <div className=""> 
-                <h1>GameShare</h1>
-            </div>
-            
-            <div>
-                <Link href="/"><a>Home</a></Link>
-                <Link href="/dashboard"><a>Dashboard</a></Link>
-                <Link href="/listings"><a>Listings</a></Link>
-            </div>
+    return (
+        <nav className="bg-gray-100">
+            <div className="max-w-6xl mx-auto">
+                <div className="flex justify-between">
 
-            <div>
-                <Link href="/signIn"><a>Sign In</a></Link>
+                    <div className="flex items-center space-x-5">
+                        {/* logo */}
+                        <div>
+                            <Link href="/"><a className="px-2 py-2 text-purple-600 font-bold text-2xl">GameShare</a></Link>
+                        </div>
+
+                        {/* primary nav */}
+                        <div class="flex items-center space-x-1 text-gray-700">
+                            <Link href="/"><a className="px-3 py-5">Home</a></Link>
+                            <Link href="/dashboard"><a className="px-3 py-5">Dashboard</a></Link>
+                            <Link href="/listings"><a className="px-3 py-5">Listings</a></Link>
+                        </div>
+                    </div>
+
+                    {/* secondary nav */}
+                    <div className="flex justify-between space-x-1">
+                        <Link href="#"><a className="px-3 py-5">Login</a></Link>
+                        <Link href="#"><a className="px-3 py-5">Sign Up</a></Link>
+                    </div>
+
+                </div>
             </div>
         </nav>
-     );
+    );
 }
 
 export default Navbar;
