@@ -1,8 +1,8 @@
 export default function SpecificListing() {
   return (
 
-    <div className={styles.container}>
-      <main className={styles.main}>
+    <div>
+      <main>
       </main>
     </div>
   )
