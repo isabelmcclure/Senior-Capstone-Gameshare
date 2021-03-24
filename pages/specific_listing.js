@@ -13,7 +13,9 @@ export default function SpecificListing() {
     <div className={style.columnContainer}>
       <Navbar></Navbar>
       <div className={style.rowContainer}>
-        <Listing name="Example Board Game" quality="5" description="This is an example board game description" imageUrl="/boardgame.jpeg" rate="$5/day"></Listing>
+        <div className={style.secondaryColumnContainer}>
+          <Listing name="Example Board Game" quality="5" description="This is an example board game description" imageUrl="/boardgame.jpeg" rate="$5/day"></Listing>
+        </div>
         <RentingOption rate={5}/>
       </div>
     </div>
