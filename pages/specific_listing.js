@@ -8,7 +8,7 @@ export default function SpecificListing() {
   return (
 
     <div>
-      <Listing></Listing>
+      <Listing name="Example Board Game" quality="5" description="This is an example board game description" imageUrl="/boardgame.jpeg"></Listing>
     </div>
   )
 }
