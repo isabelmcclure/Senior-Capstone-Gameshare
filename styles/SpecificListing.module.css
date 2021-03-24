@@ -3,7 +3,7 @@
   min-height: 100vh;
   padding: 1.0rem 1.0rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .main {
@@ -109,6 +109,10 @@
 
 .logo {
   height: 1em;
+}
+
+.calendar{
+  padding-top: 5em;
 }
 
 @media (max-width: 600px) {

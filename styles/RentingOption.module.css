@@ -1,4 +1,4 @@
-.container {
+.rowContainer {
   overflow: hidden;
   height: 5%;
   padding: 1.0rem 1.0rem;
@@ -6,10 +6,23 @@
   flex-direction: row;
 }
 
+.columnContainer {
+  overflow: hidden;
+  height: 5%;
+  padding: 1.0rem 1.0rem;
+  display: flex;
+  flex-direction: column;
+}
+
 .image{
   max-height: 10em;
   padding: 0.5em;
   border-radius: 25px;
+}
+
+.date{
+  border-style: solid;
+  border-color: #0070f3;
 }
 
 .main {
@@ -85,9 +98,9 @@
 }
 
 .card {
-  margin: 1rem;
+  margin-left: 1rem;
   flex-basis: 45%;
-  padding: 1.5rem;
+  padding: .20rem;
   text-align: left;
   color: inherit;
   text-decoration: none;
