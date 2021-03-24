@@ -7,11 +7,15 @@ export default function RentingOption() {
 
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
+  const [rentAmount, setRentAmount] = useState(0)
 
   const startDateSelected = (value, event) => {setStartDate(value)}
 
   const endDateSelected = (value, event) => {
-    if(!(startDate > value)){setEndDate(value)}
+    if(!(startDate > value)){
+      setEndDate(value)
+      setRentAmount(Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)))
+    }
   }
 
 
@@ -26,6 +30,7 @@ export default function RentingOption() {
         Select rent date: <DatePicker className={style.card} selected={endDate} onChange={endDateSelected}/>
       </div>
       <img className={style.image} src='/location.png'/>
+      {rentAmount}
     </div>
   )
 }

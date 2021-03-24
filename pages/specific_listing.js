@@ -10,8 +10,8 @@ export default function SpecificListing() {
   return (
     
     <div className={style.container}>
-      <Listing name="Example Board Game" quality="5" description="This is an example board game description" imageUrl="/boardgame.jpeg"></Listing>
-      <RentingOption/>
+      <Listing name="Example Board Game" quality="5" description="This is an example board game description" imageUrl="/boardgame.jpeg" rate="$5/day"></Listing>
+      <RentingOption rate={5}/>
     </div>
   )
 }

@@ -14,6 +14,7 @@ export default function Listing(props) {
           <h1 className={style.description}>What is {props.name}?</h1>
           {props.description}
           <h1 className={style.description}>Quailty: {props.quality}</h1>
+          <h1 className={style.description}>Rate: {props.rate}</h1>
       </main>
     </div>
   )
