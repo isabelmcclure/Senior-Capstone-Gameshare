@@ -9,7 +9,7 @@ export default function RentingOption() {
   const [endDate, setEndDate] = useState(new Date())
 
   const startDateSelected = (value, event) => {setStartDate(value)}
-  
+
   const endDateSelected = (value, event) => {
     if(!(startDate > value)){setEndDate(value)}
   }
@@ -25,6 +25,7 @@ export default function RentingOption() {
       <div className={style.rowContainer}>
         Select rent date: <DatePicker className={style.card} selected={endDate} onChange={endDateSelected}/>
       </div>
+      <img className={style.image} src='/location.png'/>
     </div>
   )
 }
