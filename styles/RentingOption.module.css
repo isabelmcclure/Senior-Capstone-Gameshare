@@ -131,6 +131,11 @@
   height: 1em;
 }
 
+.btn{
+  padding-left: 2px;
+  margin-left: 10px;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
