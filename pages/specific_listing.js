@@ -7,14 +7,11 @@ import style from '../styles/SpecificListing.module.css'
 
 export default function SpecificListing() {
 
-  const startDate = "March 21st 2019"
-  const endDate = "March 28th 2019"
-
   return (
     
     <div className={style.container}>
       <Listing name="Example Board Game" quality="5" description="This is an example board game description" imageUrl="/boardgame.jpeg"></Listing>
-      <RentingOption></RentingOption>
+      <RentingOption/>
     </div>
   )
 }
