@@ -21,7 +21,7 @@ const boardGameSchema = new mongoose.Schema({
         max: 5,
     },
     img: {
-        type: Buffer,
+        type: String,
         required: [true]
     },
     price: {
@@ -32,10 +32,10 @@ const boardGameSchema = new mongoose.Schema({
         type: Date,
         required: [true]
     },
-    location: {
+    ownerID: {
         type: String,
         required: [true]
-    },
+    }
 
 },
     {
