@@ -1,5 +1,6 @@
 // import useAuth from '../hooks/useAuth'
 
+import MyListings from "../components/MyListings";
 import UserBar from "../components/UserBar";
 
 export default function Dashboard() {
@@ -12,6 +13,7 @@ export default function Dashboard() {
         // </>
         <div>
             <UserBar></UserBar>
+            <MyListings></MyListings>
         </div>
 
     )

@@ -1,13 +1,13 @@
 const UserBar = () => {
     return ( 
-        <div className="max-w-6xl mx-auto bg-blue-200 mt-8 rounded-xl shadow-2xl">
+        <div className="max-w-6xl mx-auto bg-blue-200 mt-8 rounded-xl shadow-lg">
             <div className = "flex p-4 h-44">
             {/* UserBar elements */}
                 <div className="border-blue-300 rounded flex justify-evenly content-center m-2 w-2/4">
 
                     {/* profile picture and use message */}
                     {/* <div className="border-blue-400 border-4 rounded-full"> */}
-                    <img className="border-blue-400 border-4 rounded-full bg-blue-300 " src="public/profileicon.png" alt="profile_picture"/>
+                    <img className="border-blue-400 border-4 rounded-full bg-blue-300 " src="https://randomuser.me/api/portraits/lego/2.jpg" alt="profile_picture"/>
                     {/* </div> */}
 
                     <div className="flex-col justify-evenly w-2/4  h-auto mt-5">
