@@ -9,7 +9,10 @@ export default function RentingOption() {
   const [endDate, setEndDate] = useState(new Date())
 
   const startDateSelected = (value, event) => {setStartDate(value)}
-  const endDateSelected = (value, event) => {setEndDate(value)}
+  
+  const endDateSelected = (value, event) => {
+    if(!(startDate > value)){setEndDate(value)}
+  }
 
 
   return (
