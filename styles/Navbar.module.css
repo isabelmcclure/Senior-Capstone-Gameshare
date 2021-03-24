@@ -1,20 +1,36 @@
 .rowContainer {
   overflow: hidden;
-  min-height: 100vh;
+  height: 5%;
   padding: 1.0rem 1.0rem;
   display: flex;
   flex-direction: row;
+  background-color: dimgrey;
+  min-height: 12vh;
+  width: 100%;
 }
 
 .columnContainer {
   overflow: hidden;
-  min-height: 100vh;
+  height: 5%;
+  padding: 1.0rem 1.0rem;
   display: flex;
   flex-direction: column;
 }
 
+.image{
+  padding: 0.5em;
+  border-radius: 25px;
+  max-width: 65%
+}
+
+.date{
+  border-style: solid;
+  border-color: #0070f3;
+}
+
 .main {
   padding: 5rem 0;
+  height: 20%;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -54,9 +70,10 @@
 
 .title {
   font-size: 2rem;
+  color:ivory;
+  padding-left: 0.5rem;
 }
 
-.title,
 .description {
   text-align: left;
 }
@@ -85,9 +102,9 @@
 }
 
 .card {
-  margin: 1rem;
+  margin-left: 1rem;
   flex-basis: 45%;
-  padding: 1.5rem;
+  padding: .20rem;
   text-align: left;
   color: inherit;
   text-decoration: none;
@@ -115,11 +132,20 @@
 }
 
 .logo {
-  height: 1em;
+  height: 2.5em;
+  float: left;
 }
 
-.calendar{
-  padding-top: 5em;
+.profile {
+  height: 3em;
+  padding-left: 82%;
+  float: right;
+}
+
+
+.btn{
+  padding-left: 2px;
+  margin-left: 10px;
 }
 
 @media (max-width: 600px) {
