@@ -1,10 +1,21 @@
-.container {
+.rowContainer {
   overflow: hidden;
   height: 5%;
   padding: 1.0rem 1.0rem;
   display: flex;
   flex-direction: row;
 }
+
+.columnContainer {
+  overflow: hidden;
+  min-height: 50vh;
+  padding: 1.0rem 1.0rem;
+  display: flex;
+  flex-direction: column;
+  border-bottom-width:2px;
+  border-bottom-color:Black;
+}
+
 
 .image{
   max-height: 10em;

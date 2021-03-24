@@ -7,13 +7,13 @@ export default function Listing(props) {
 
   return (
 
-    <div>
-      <div className={style.container}>
+    <div className={style.columnContainer}>
+      <div className={style.rowContainer}>
           <ModalImage className={style.image} small={props.imageUrl} large={props.imageUrl} alt="Vercel Logo"/>
           <ModalImage className={style.image} small={props.imageUrl} large={props.imageUrl} alt="Vercel Logo"/>
           <ModalImage className={style.image} small={props.imageUrl} large={props.imageUrl} alt="Vercel Logo"/>
       </div>
-      <div className={style.container}>
+      <div className={style.rowContainer}>
           <ModalImage className={style.image} small={props.imageUrl} large={props.imageUrl} alt="Vercel Logo"/>
           <ModalImage className={style.image} small={props.imageUrl} large={props.imageUrl} alt="Vercel Logo"/>
           <ModalImage className={style.image} small={props.imageUrl} large={props.imageUrl} alt="Vercel Logo"/>
