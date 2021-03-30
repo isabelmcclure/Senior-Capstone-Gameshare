@@ -1,7 +1,7 @@
 import QueryBar from "../components/QueryBar";
 import QueryListing from "../components/QueryListings";
-
-const Listings = () => {
+ 
+export default function Listings(aaa, bbb) {
     return (
         <div>
             <QueryBar></QueryBar>
@@ -9,5 +9,3 @@ const Listings = () => {
         </div>
     );
 }
- 
-export default Listings;
