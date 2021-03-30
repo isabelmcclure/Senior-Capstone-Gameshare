@@ -6,7 +6,8 @@ export default function SpecificListing() {
   return (
     
     <div>
-      <h1>Create a Listing</h1>
+      <h1 className="px-5 py-5 mb-2 uppercase font-bold text-3xl text-grey-darkest">Create a Listing</h1>
+      <div className="w-1/2 px-12">
       <form className="mb-6" action="/" method="post">
         <div className="flex flex-col mb-4 ">
           <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="game_name">Name of Game</label>
@@ -44,6 +45,7 @@ export default function SpecificListing() {
           <button className="block bg-green-500 hover:bg-green-600 text-white uppercase text-lg mx-auto p-4 rounded">Create Listing</button>
         </div>
       </form>
+      </div>
     </div>
   )
 }
