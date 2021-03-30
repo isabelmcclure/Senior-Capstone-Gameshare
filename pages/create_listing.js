@@ -50,17 +50,11 @@ class CreateListing extends Component {
   handleLocationChange(event){
     this.setState({location: event.target.value});
   }
-  handleSubmit(event){
-    console.log(event.target)
-  }
-  
-
-  fileDetails = async event => {
-    console.log(event.target)
-
-    /*const files = event.target.files;
+  async handleSubmit(event){
+    event.preventDefault();
+    const files = this.state.imageFile;
     const data = new FormData();
-    data.append('file', files[0]);
+    data.append('file', files);
     data.append('upload_preset', 'GameShareImages')
 
     console.log(data.entries())
@@ -72,8 +66,6 @@ class CreateListing extends Component {
 
     const file = await res.json();
     console.log(file.secure_url);
-
-    //const image = await Image.create(file.secure_url, "1")*/
   }
 
   render() {
@@ -82,7 +74,7 @@ class CreateListing extends Component {
     <div>
       <h1 className="px-5 py-5 mb-2 uppercase font-bold text-3xl text-grey-darkest">Create a Listing</h1>
       <div className="w-1/2 px-12">
-      <form className="mb-6" action="/create_listing" method="POST">
+      <form className="mb-6" onSubmit={this.handleSubmit}>
         <div className="flex flex-col mb-4 ">
           <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="game_name">Name of Game</label>
           <input className="border py-2 px-3 text-grey-darkest" type="text" name="game_name" id="game_name" onChange={this.handleGameNameChange}></input>
