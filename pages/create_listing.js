@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, {Component, useState } from 'react';
 //import boardgameImage from '.public/boardgame.jpeg'
 
-export default function SpecificListing() {
+class CreateListing extends Component {
 
-  return (
+  render() {
+    return (
     
     <div>
       <h1 className="px-5 py-5 mb-2 uppercase font-bold text-3xl text-grey-darkest">Create a Listing</h1>
@@ -53,5 +54,8 @@ export default function SpecificListing() {
       </form>
       </div>
     </div>
-  )
+    )
+    }
 }
+
+export default CreateListing
