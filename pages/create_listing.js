@@ -52,7 +52,7 @@ class CreateListing extends Component {
   }
   async handleSubmit(event){
     event.preventDefault();
-    
+
     const files = this.state.imageFile;
     const data = new FormData();
     data.append('file', files);
@@ -67,6 +67,22 @@ class CreateListing extends Component {
 
     const file = await res.json();
     console.log(file.secure_url);
+
+    const boardGameData = new FormData();
+    boardGameData.append('title', this.state.gameName);
+    boardGameData.append('description', this.state.description);
+    boardGameData.append('quality', this.state.quality);
+    boardGameData.append('img', file.secure_url);
+    boardGameData.append('price', this.state.price);
+    boardGameData.append('duration', this.state.startDate);
+    boardGameData.append('location', this.state.location);
+
+    const gameRes = await fetch('http://localhost:3000/api/boardgames/', {
+      method: 'POST',
+      body:boardGameData
+    });
+
+    console.log(gameRes.json());
   }
 
   render() {
