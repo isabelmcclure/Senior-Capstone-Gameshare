@@ -52,6 +52,7 @@ class CreateListing extends Component {
   }
   async handleSubmit(event){
     event.preventDefault();
+    
     const files = this.state.imageFile;
     const data = new FormData();
     data.append('file', files);
