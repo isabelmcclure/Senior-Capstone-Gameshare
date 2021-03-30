@@ -68,17 +68,30 @@ class CreateListing extends Component {
     const file = await res.json();
     console.log(file.secure_url);
 
-    const boardGameData = new FormData();
-    boardGameData.append('title', this.state.gameName);
+    const boardGameData = JSON.stringify({ title: "first_test",
+    description: "testing",
+    quality: 5,
+    img: "https://res.cloudinary.com/dyd5yuvop/image/upload/v1617133675/GameShareImages/n7pbb8m2u1anipbybk9c.png",
+    price: 20,
+    duration: "2021-03-10",
+    location: "test house" })
+      
+    /*boardGameData.append('title', this.state.gameName);
     boardGameData.append('description', this.state.description);
     boardGameData.append('quality', this.state.quality);
     boardGameData.append('img', file.secure_url);
     boardGameData.append('price', this.state.price);
     boardGameData.append('duration', this.state.startDate);
-    boardGameData.append('location', this.state.location);
+    boardGameData.append('location', this.state.location);*/
 
-    const gameRes = await fetch('http://localhost:3000/api/boardgames/', {
+    console.log(boardGameData)
+
+    const gameRes = await fetch('/api/boardgames', {
       method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
       body:boardGameData
     });
 
