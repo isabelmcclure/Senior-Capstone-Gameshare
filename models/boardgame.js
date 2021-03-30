@@ -21,7 +21,7 @@ const boardGameSchema = new mongoose.Schema({
         max: 5,
     },
     img: {
-        type: Buffer,
+        type: String,
         required: [true]
     },
     price: {
