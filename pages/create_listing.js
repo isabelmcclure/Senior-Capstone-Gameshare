@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 //import boardgameImage from '.public/boardgame.jpeg'
-import Listing from '../components/Listing.js'
-import RentingOption from '../components/RentingOption.js'
-import 'react-datepicker/dist/react-datepicker.css'
-import style from '../styles/SpecificListing.module.css'
 
 export default function SpecificListing() {
 
@@ -11,13 +7,43 @@ export default function SpecificListing() {
 
   return (
     
-    <div className={style.columnContainer}>
-      <div className={style.rowContainer}>
-        <div className={style.secondaryColumnContainer}>
-          <Listing name="Example Board Game" quality="5" description={description} imageUrl="/boardgame.jpeg" rate="$5/day"></Listing>
+    <div>
+      <h1>Create a Listing</h1>
+      <form action="/" method="post">
+        <div>
+          <label for="game_name">Name of Game</label>
+          <input type="text" name="game_name" id="game_name"></input>
         </div>
-        <RentingOption rate={5}/>
-      </div>
+        <div>
+          <label for="description">Description</label>
+          <input type="text" name="description" id="description"></input>
+        </div>
+        <div>
+          <label for="quality">Quality</label>
+          <input type="text" name="quality" id="quality"></input>
+        </div>
+        <div>
+          <label for="pictures">Pictures</label>
+          <input type="text" name="pictures" id="pictures"></input>
+        </div>
+        <div>
+          <label for="price">Price</label>
+          <input type="text" name="price" id="price"></input>
+        </div>
+        <div>
+          <label for="start_date">Start Date</label>
+          <input type="date" name="start_date" id="start_date"></input>
+        </div>
+        <div>
+          <label for="end_date">End Date</label>
+          <input type="date" name="end_date" id="end_date"></input>
+        </div>
+        <div>
+          <label for="location">Location</label>
+          <input type="text" name="location" id="location"></input>
+        </div>
+        <button type="submit">Create Listing</button>
+      </form>
     </div>
   )
 }
