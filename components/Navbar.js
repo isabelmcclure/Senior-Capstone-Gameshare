@@ -16,7 +16,7 @@ const Navbar = () => {
                         <div className="flex items-center space-x-1 text-gray-700">
                             <Link href="/"><a className="px-3 py-5">Home</a></Link>
                             <Link href="/dashboard"><a className="px-3 py-5">Dashboard</a></Link>
-                            <Link href="/specific_listing"><a className="px-3 py-5">Listings</a></Link>
+                            <Link href="/listings"><a className="px-3 py-5">Listings</a></Link>
                         </div>
                     </div>
 
