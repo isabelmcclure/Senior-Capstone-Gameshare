@@ -57,8 +57,6 @@ class CreateListing extends Component {
     const data = new FormData();
     data.append('file', files);
     data.append('upload_preset', 'GameShareImages')
-
-    console.log(data.entries())
     
     const res = await fetch('https://api.cloudinary.com/v1_1/dyd5yuvop/image/upload', {
       method: 'POST',
@@ -66,9 +64,6 @@ class CreateListing extends Component {
     });
 
     const file = await res.json();
-    console.log(file.secure_url);
-
-    console.log(this.state.duration)
 
     const boardGameData = JSON.stringify({ title: this.state.gameName,
     description: this.state.description,
@@ -77,8 +72,6 @@ class CreateListing extends Component {
     price: this.state.price,
     duration: this.state.startDate,
     location: this.state.location})
-
-    console.log(boardGameData)
 
     const gameRes = await fetch('/api/boardgames', {
       method: 'POST',
