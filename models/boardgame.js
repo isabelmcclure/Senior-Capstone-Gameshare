@@ -28,8 +28,9 @@ const boardGameSchema = new mongoose.Schema({
         type: Number,
         required: [true]
     },
-    duration: {
+    postedAt: {
         type: Date,
+        default: Date.now,
         required: [true]
     },
     ownerID: {

@@ -4,11 +4,10 @@ import axios from 'axios'
 
 
 export default async (req, res) => {
-    let user;
+    let userMagic;
     try {
-        user = await Iron.unseal(CookieService.getAuthToken(req.cookies), process.env.ENCRYPTION_SECRET, Iron.defaults)
+        userMagic = await Iron.unseal(CookieService.getAuthToken(req.cookies), process.env.ENCRYPTION_SECRET, Iron.defaults)
     } catch (error) {
-        res.status(401).end()
     }
 
     // now we have access to the data inside of user
@@ -16,12 +15,40 @@ export default async (req, res) => {
     // in the token.
     try {
         await axios.post('http://localhost:3000/api/users', {
-            email: user.email
+            email: user.email,
+            rating: 5,
         })
     } catch (error) {
 
     }
 
+    let userData;
+    try {
+        userData = await axios.get('http://localhost:3000/api/users', {
+            params: {
+                email: user.email
+            }
+        })
+    } catch (error) {
 
-    res.json(user)
+    }
+    let userBoardgames;
+    try {
+        userBoardgames = await axios.get('http://localhost:3000/api/boardgames', {
+            params: {
+                ownerID: user.email
+            }
+        })
+    } catch (error) {
+
+    }
+
+    //console.log(userData.data.data);
+    res.json({
+        user: userMagic,
+        userData: userData,
+        userBoardgames: userBoardgames
+    });
+
+
 }

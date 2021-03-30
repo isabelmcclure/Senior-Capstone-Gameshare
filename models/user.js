@@ -15,11 +15,14 @@ const userSchema = new mongoose.Schema({
     },
     location: {
         type: String,
+        default: "N/A",
     },
     rating: {
         type: Number,
         min: 1,
-        max: 5
+        max: 5,
+        default: 5,
+        required: true
     },
     boardgames: [
         {
