@@ -9,6 +9,9 @@ const MyListings = (props) => {
         const res = await axios.delete(`http://localhost:3000/api/boardgames/${event.target.id.value}`)
         console.log(res);
     }
+
+    const router = useRouter();
+
     return (
         <div>
             <h1 className="mt-7 w-5/6 mx-auto text-3xl">My Listings</h1>
@@ -47,6 +50,9 @@ const MyListings = (props) => {
                     })}
                 </tbody>
             </table>
+            <div className="pt-5 p-28">
+                <button className="font-mono bg-blue-500 p-2 mr-2 rounded text-green-200" onClick={() => { router.push('/create_listing') }}>Add New Listing</button>
+            </div>
         </div>
     );
 }

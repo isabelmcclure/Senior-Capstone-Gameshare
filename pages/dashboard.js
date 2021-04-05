@@ -18,6 +18,11 @@ export default function Dashboard() {
         //     {loading ? "Loading..." : user.email}
         // </>
         <div>
+            <Head>
+                <title>GameShare</title>
+                <link rel="icon" href="/GS.png" />
+            </Head>
+
             <UserBar userData={data.userD}></UserBar>
             <MyListings userBoardgames={data.userB}></MyListings>
         </div>
