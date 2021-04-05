@@ -1,6 +1,5 @@
 import Boardgame from '../../../models/boardgame'
 
-
 export default async (req, res) => {
     const {
         query: { id },
