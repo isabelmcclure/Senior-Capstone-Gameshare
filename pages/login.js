@@ -24,7 +24,9 @@ export default function Login() {
             // set authorization cookies and now we
             // can redirect to the dashboard!
             router.push('/dashboard')
-        } else { /* handle errors */ }
+        } else {
+            throw new Error(await authRequest.text())
+        }
     }
 
     return (

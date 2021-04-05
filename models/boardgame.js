@@ -28,15 +28,15 @@ const boardGameSchema = new mongoose.Schema({
         type: Number,
         required: [true]
     },
-    duration: {
+    postedAt: {
         type: Date,
+        default: Date.now,
         required: [true]
     },
-    location: {
+    ownerID: {
         type: String,
         required: [true]
-    },
-
+    }
 },
     {
         timestamps: true,
@@ -44,4 +44,4 @@ const boardGameSchema = new mongoose.Schema({
 
 )
 
-module.exports = mongoose.models.Boardgame || mongoose.model('Boardgame', boardGameSchema);
+module.exports = mongoose.model('Boardgame') || mongoose.model('Boardgame', boardGameSchema);
