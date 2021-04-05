@@ -31,7 +31,7 @@ export default async (req, res) => {
 
     let userData;
     try {
-        userData = await User.findOne({ email: userMagic.email })
+        userData = await User.findOne({ email: userMagic.email }) || null
         /*userData = await axios.get('http://localhost:3000/api/users', {
             params: {
                 email: userMagic.email
@@ -42,7 +42,7 @@ export default async (req, res) => {
     }
     let userBoardgames;
     try {
-        userBoardgames = await Boardgame.find({ ownerID: userMagic.email })
+        userBoardgames = await Boardgame.find({ ownerID: userMagic.email }) || null
         /*userBoardgames = await axios.get('http://localhost:3000/api/boardgames', {
             params: {
                 ownerID: userMagic.email

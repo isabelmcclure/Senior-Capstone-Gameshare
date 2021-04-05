@@ -44,4 +44,4 @@ const boardGameSchema = new mongoose.Schema({
 
 )
 
-module.exports = mongoose.models.Boardgame || mongoose.model('Boardgame', boardGameSchema);
+module.exports = mongoose.model('Boardgame') || mongoose.model('Boardgame', boardGameSchema);
