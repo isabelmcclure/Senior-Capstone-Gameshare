@@ -1,5 +1,7 @@
+import dbConnect from '../../../util/dbConnect'
 import User from '../../../models/user'
 
+dbConnect();
 
 export default async (req, res) => {
     const {

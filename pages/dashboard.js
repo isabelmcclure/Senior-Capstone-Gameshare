@@ -4,11 +4,10 @@ import MyListings from "../components/MyListings";
 import UserBar from "../components/UserBar";
 
 export default function Dashboard() {
-    const { user, userData, userBoardgames, loading } = useAuth();
+    const { data, loading, error } = useAuth();
 
-    console.log(user);
-
-    if (!user) {
+    //console.log(data)
+    if (!data) {
         return <Error statusCode={404} />
     }
 
@@ -19,8 +18,8 @@ export default function Dashboard() {
         //     {loading ? "Loading..." : user.email}
         // </>
         <div>
-            {/*<UserBar userData={ }></UserBar>
-            <MyListings userBoardgames={ }></MyListings>*/}
+            <UserBar userData={data.userD}></UserBar>
+            <MyListings userBoardgames={data.userB}></MyListings>
         </div>
 
     )

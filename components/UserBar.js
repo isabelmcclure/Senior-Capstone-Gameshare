@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const UserBar = (props) => {
     return (
         <div className="max-w-6xl mx-auto bg-blue-200 mt-8 rounded-xl shadow-lg">
@@ -10,13 +12,13 @@ const UserBar = (props) => {
                     <img className="border-blue-400 border-4 rounded-full bg-blue-300 " src="https://randomuser.me/api/portraits/lego/2.jpg" alt="profile_picture" />
                     {/* </div> */}
 
-                    <div className="flex-col justify-evenly w-2/4  h-auto mt-5">
+                    <div className="flex-col justify-evenly w-2/4 h-auto mt-5">
                         <h1 className="font-mono font-extrabold text-blue-700 text-1xl">Welcome Back,</h1>
-                        <h1 className="font-mono font-extrabold text-blue-700 text-5xl mt-1">{props.userData.email}</h1>
+                        <h1 className="font-mono font-extrabold text-blue-700 text-3xl mt-1">{props.userData.email}</h1>
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 divide-y divide-purple-300 w-2/4  h-auto">
+                <div className="grid grid-cols-1 divide-y divide-purple-300 w-2/4 h-auto">
                     <div>
                         <h1 className="font-mono inline-block font-extrabold text-blue-700 text-1xl">User Rating:</h1>
                         <p className="font-mono inline-block pl-2 ">{props.userData.rating}</p>
@@ -30,8 +32,12 @@ const UserBar = (props) => {
                         <p className="font-mono inline-block pl-2">{props.userData.location}</p>
                     </div>
                     <div className="pt-5">
-                        <button className="font-mono bg-blue-500 p-2 mr-2 rounded text-green-200">Friends</button>
-                        <button className="font-mono bg-blue-500 p-2 mr-2 rounded text-green-200">My Transactions</button>
+                        {/*<button className="font-mono bg-blue-500 p-2 mr-2 rounded text-white">Friends</button>*/}
+                        <button className="font-mono bg-blue-500 p-2 mr-2 rounded text-white">My Transactions</button>
+                        <Link href="/createListing"><button className="font-mono bg-blue-500 p-2 mr-2 rounded text-white">New Listing</button></Link>
+                        <Link href="/editProfile"><button className="font-mono bg-blue-500 p-2 mr-2 rounded text-white">Edit Profile</button></Link>
+
+
                     </div>
                 </div>
 

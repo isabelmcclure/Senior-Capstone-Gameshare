@@ -1,54 +1,65 @@
 import Iron from '@hapi/iron'
 import CookieService from '../../util/cookie'
 import axios from 'axios'
+import dbConnect from '../../util/dbConnect'
+import User from '../../models/user'
+import Boardgame from '../../models/boardgame'
 
+dbConnect();
 
 export default async (req, res) => {
     let userMagic;
     try {
         userMagic = await Iron.unseal(CookieService.getAuthToken(req.cookies), process.env.ENCRYPTION_SECRET, Iron.defaults)
     } catch (error) {
+        console.log(error)
     }
 
     // now we have access to the data inside of user
     // and we could make database calls or just send back what we have
     // in the token.
+    let newUser;
     try {
-        await axios.post('http://localhost:3000/api/users', {
-            email: user.email,
+        newUser = await User.findOneAndUpdate({ email: userMagic.email }, { email: userMagic.email }, { upsert: true })
+        /*await axios.post('http://localhost:3000/api/users', {
+            email: userMagic.email,
             rating: 5,
-        })
+        })*/
     } catch (error) {
-
+        console.log(error);
     }
 
     let userData;
     try {
-        userData = await axios.get('http://localhost:3000/api/users', {
+        userData = await User.findOne({ email: userMagic.email })
+        /*userData = await axios.get('http://localhost:3000/api/users', {
             params: {
-                email: user.email
+                email: userMagic.email
             }
-        })
+        }) || null;*/
     } catch (error) {
-
+        console.log(error);
     }
     let userBoardgames;
     try {
-        userBoardgames = await axios.get('http://localhost:3000/api/boardgames', {
+        userBoardgames = await Boardgame.find({ ownerID: userMagic.email })
+        /*userBoardgames = await axios.get('http://localhost:3000/api/boardgames', {
             params: {
-                ownerID: user.email
+                ownerID: userMagic.email
             }
-        })
+        }) || null;*/
     } catch (error) {
-
+        console.log(error);
     }
 
-    //console.log(userData.data.data);
-    res.json({
-        user: userMagic,
-        userData: userData,
-        userBoardgames: userBoardgames
-    });
+    var user = {
+        userS: userMagic,
+        userD: userData,
+        userB: userBoardgames
+    }
+
+    //console.log(user);
+    res.json(user);
 
 
 }

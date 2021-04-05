@@ -8,13 +8,12 @@ function fetcher(route) {
 }
 
 export default function useAuth() {
-    const { user, userData, userBoardgames, error, mutate } = useSWR('/api/user', fetcher);
-    const loading = user === undefined;
+    const { data, error } = useSWR('/api/user', fetcher);
+    const loading = data === undefined;
 
+    //console.log(data)
     return {
-        user,
-        userData,
-        userBoardgames,
+        data,
         loading,
         error,
     };
