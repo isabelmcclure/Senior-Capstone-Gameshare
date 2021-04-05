@@ -37,6 +37,9 @@ const MyListings = () => {
                     </td>
                 </tr> 
             </table>
+            <div className="pt-5 p-28">
+                <button className="font-mono bg-blue-500 p-2 mr-2 rounded text-green-200">Add New Listing</button>
+            </div>
         </div>
     );
 }
