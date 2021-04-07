@@ -1,11 +1,8 @@
 import dbConnect from '../../../util/dbConnect'
 import Boardgame from '../../../models/boardgame'
 
-<<<<<<< HEAD
 dbConnect();
 
-=======
->>>>>>> 3aba75dfe243ad7b0afd32d68d27663bdbc2dd28
 export default async (req, res) => {
     const {
         query: { id },

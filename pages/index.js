@@ -22,7 +22,7 @@ export default function Home() {
           <DateRangePicker />
         </div>
         <div className={styles.search}>
-          <button class="bg-transparent hover:bg-black-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-white-500 hover:border-white-500 rounded">
+          <button className="bg-transparent hover:bg-black-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-white-500 hover:border-white-500 rounded">
             Search
         </button>
         </div>

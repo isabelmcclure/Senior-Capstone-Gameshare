@@ -1,4 +1,5 @@
 import boardgame from "../models/boardgame";
+import Link from 'next/link'
 
 
 function QueryListing(props) {
@@ -21,7 +22,7 @@ function QueryListing(props) {
                                 <td className="px-4 py-3">${boardgame.price}</td>
                                 <td className="px-4 py-3">{boardgame.postedAt}</td>
                                 <td className="px-4 py-3">
-                                    <button className="bg-blue-500 p-2 rounded text-green-200">View</button>
+                                    <Link href={`/listings/${boardgame._id}`}><button className="bg-blue-500 p-2 rounded text-green-200">View</button></Link>
                                     <button className="bg-blue-500 p-2 rounded text-green-200">Edit</button>
                                 </td>
                             </tr>

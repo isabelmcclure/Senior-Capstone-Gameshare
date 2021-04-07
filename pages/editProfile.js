@@ -1,9 +1,11 @@
+import axios from 'axios'
+
 export default function EditProfile(props) {
 
     const profileUpdate = async event => {
         event.preventDefault()
 
-        const res = await axios.put(`http://localhost:3000/api/user/`, {
+        const res = await axios.put(`http://localhost:3000/api/users/`, {
             username: event.target.username.value,
             location: event.target.location.value
         })
