@@ -28,6 +28,14 @@ const boardGameSchema = new mongoose.Schema({
         type: Number,
         required: [true]
     },
+    genre: {
+        type: String,
+        required: [true]
+    },
+    numPlayers: {
+        type: Number,
+        required: [true]
+    },
     postedAt: {
         type: Date,
         default: Date.now,
@@ -36,7 +44,15 @@ const boardGameSchema = new mongoose.Schema({
     ownerID: {
         type: String,
         required: [true]
-    }
+    },
+    location: {
+        type: String,
+        required: [true]
+    },
+    available: {
+        type: Boolean,
+        required: [true]
+    },
 },
     {
         timestamps: true,

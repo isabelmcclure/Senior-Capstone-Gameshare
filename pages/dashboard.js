@@ -2,6 +2,7 @@ import useAuth from '../hooks/useAuth'
 import Error from 'next/error'
 import MyListings from "../components/MyListings";
 import UserBar from "../components/UserBar";
+import Head from 'next/head'
 
 export default function Dashboard() {
     const { data, loading, error } = useAuth();
