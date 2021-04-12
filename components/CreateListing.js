@@ -1,4 +1,5 @@
 import React, {Component, useState } from 'react';
+import { useRouter } from 'next/router';
 //import boardgameImage from '.public/boardgame.jpeg'
 
 class CreateListing extends Component {
@@ -12,7 +13,8 @@ class CreateListing extends Component {
                   price: '',
                   startDate: '',
                   endDate: '',
-                  location: ''};
+                  location: '',
+                  email: props.userData.email};
 
     this.handleGameNameChange = this.handleGameNameChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
@@ -70,8 +72,12 @@ class CreateListing extends Component {
     quality: this.state.quality,
     img: file.secure_url,
     price: this.state.price,
+    genre: "test genre",
+    numPlayers: 5,
     duration: this.state.startDate,
-    location: this.state.location})
+    location: this.state.location,
+    ownerID: this.state.email,
+    available: true})
 
     const gameRes = await fetch('/api/boardgames', {
       method: 'POST',
