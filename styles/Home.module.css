@@ -32,7 +32,6 @@
   border: 2px solid white;
   border-radius: 4px;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
 }
 .landing {
   background-color: #38b6ff;
@@ -41,6 +40,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.login {
+  background-color: #38b6ff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  column-gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
 }
 .main {
   padding: 5rem 0;

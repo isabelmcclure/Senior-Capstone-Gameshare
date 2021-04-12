@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 //import boardgameImage from '.public/boardgame.jpeg'
+import Head from 'next/head'
 import Listing from '../components/Listing.js'
 import RentingOption from '../components/RentingOption.js'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -12,6 +13,10 @@ export default function SpecificListing() {
   return (
     
     <div className={style.columnContainer}>
+      <Head>
+            <title>GameShare</title>
+            <link rel="icon" href="/GS.png" />
+      </Head>
       <div className={style.rowContainer}>
         <div className={style.secondaryColumnContainer}>
           <Listing name="Example Board Game" quality="5" description={description} imageUrl="/boardgame.jpeg" rate="$5/day"></Listing>
