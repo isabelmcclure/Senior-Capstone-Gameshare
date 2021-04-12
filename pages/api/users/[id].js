@@ -1,5 +1,5 @@
 import dbConnect from '../../../util/dbConnect'
-import Boardgame from '../../../models/boardgame'
+import User from '../../../models/user'
 
 dbConnect();
 
@@ -12,12 +12,12 @@ export default async (req, res) => {
     switch (method) {
         case 'GET':
             try {
-                const boardgame = await Boardgame.findById(id);
+                const user = await User.findById(id);
 
-                if (!boardgame) {
+                if (!user) {
                     return res.status(400).json({ success: false });
                 }
-                return res.status(200).json({ success: true, data: boardgame });
+                return res.status(200).json({ success: true, data: user });
 
             } catch (error) {
                 return res.status(400).json({ success: false });
@@ -25,14 +25,14 @@ export default async (req, res) => {
             break;
         case 'PUT':
             try {
-                const boardgame = await Boardgame.findByIdAndUpdate(id, req.body, {
+                const user = await User.findByIdAndUpdate(id, req.body, {
                     new: true,
                     runValidators: true
                 });
-                if (!boardgame) {
+                if (!user) {
                     return res.status(400).json({ success: false });
                 }
-                return res.status(200).json({ success: true, data: boardgame });
+                return res.status(200).json({ success: true, data: user });
 
 
             } catch (error) {
@@ -41,9 +41,9 @@ export default async (req, res) => {
             break;
         case 'DELETE':
             try {
-                const deletedGame = await Boardgame.deleteOne({ _id: id });
+                const deletedUser = await User.deleteOne({ _id: id });
 
-                if (!deletedGame) {
+                if (!deletedUser) {
                     return res.status(400).json({ success: false });
                 }
                 return res.status(200).json({ success: true, data: {} });
