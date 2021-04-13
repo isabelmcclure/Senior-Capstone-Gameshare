@@ -1,5 +1,6 @@
-import React, {Component, useState } from 'react';
+import React, {Component, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import redirect from 'nextjs-redirect'
 //import boardgameImage from '.public/boardgame.jpeg'
 
 class CreateListing extends Component {
@@ -89,6 +90,7 @@ class CreateListing extends Component {
     });
 
     console.log(gameRes.json());
+
   }
 
   render() {
