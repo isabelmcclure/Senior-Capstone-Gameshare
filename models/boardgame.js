@@ -60,4 +60,10 @@ const boardGameSchema = new mongoose.Schema({
 
 )
 
+/*if(!mongoose.models['boardgame']){
+    module.exports = mongoose.model('boardgame', boardGameSchema);
+}else{
+    module.exports = mongoose.models['boardgame']
+}*/
+
 module.exports = mongoose.model('Boardgame') || mongoose.model('Boardgame', boardGameSchema);

@@ -38,4 +38,10 @@ const userSchema = new mongoose.Schema({
     }
 )
 
-module.exports = mongoose.model('User') || mongoose.model('User', userSchema);
+if(!mongoose.models['User']){
+    module.exports = mongoose.model('User', userSchema);
+}else{
+    module.exports = mongoose.models['User']
+}
+
+//module.exports = mongoose.model('User') || mongoose.model('User', userSchema);
