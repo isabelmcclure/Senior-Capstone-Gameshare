@@ -39,7 +39,7 @@ const MyListings = (props) => {
 
                                 <td className="flex px-4 py-3">
                                     <Link href=""><button className="bg-blue-500 p-2 rounded text-green-200 px-2">View</button></Link>
-                                    <Link href="/editListing"><button className="bg-blue-500 p-2 rounded text-green-200 px-2">Edit</button></Link>
+                                    <Link href={`/editListing/${boardgame._id}`}><button className="bg-blue-500 p-2 rounded text-green-200">Edit</button></Link> 
                                     <form onSubmit={deleteListing}>
                                         <input type="hidden" name="id" value={boardgame._id}></input>
                                         <button className="bg-blue-500 p-2 rounded text-green-200" type="submit">Delete</button>
