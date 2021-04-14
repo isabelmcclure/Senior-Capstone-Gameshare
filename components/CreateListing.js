@@ -15,6 +15,7 @@ class CreateListing extends Component {
                   startDate: '',
                   endDate: '',
                   location: '',
+                  coords: '',
                   email: props.userData.email};
 
     this.handleGameNameChange = this.handleGameNameChange.bind(this);
@@ -68,6 +69,32 @@ class CreateListing extends Component {
 
     const file = await res.json();
 
+    // coordinates calculation
+    const router = useRouter();
+    const opencage = require('opencage-api-client');
+
+    opencage.geocode({q: this.state.location, limit: 1, countrycode: 'us'}).then(data => {
+    //console.log(JSON.stringify(data));
+    if (data.status.code === 200) {
+        if (data.results.length > 0) {
+        var place = data.results[0];
+        console.log(place.geometry);
+        this.setState({coords: place.geometry})
+        }
+    } else if (data.status.code === 402) {
+        console.log('hit free trial daily limit');
+        console.log('become a customer: https://opencagedata.com/pricing'); 
+    } else {
+        // other possible response codes:
+        // https://opencagedata.com/api#codes
+        console.log('error', data.status.message);
+    }
+    }).catch(error => {
+    console.log('error', error.message);
+    });
+    console.log(router.query.location);
+    ///////////////////////////////////////
+
     const boardGameData = JSON.stringify({ title: this.state.gameName,
     description: this.state.description,
     quality: this.state.quality,
@@ -77,6 +104,7 @@ class CreateListing extends Component {
     numPlayers: 5,
     duration: this.state.startDate,
     location: this.state.location,
+    coords: this.state.coords,
     ownerID: this.state.email,
     available: true})
 
