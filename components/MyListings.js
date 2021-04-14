@@ -1,19 +1,21 @@
 import Link from 'next/link'
 import axios from 'axios'
+import React, {Component, useState } from 'react';
 import { useRouter } from 'next/router'
 
 const MyListings = (props) => {
 
+    const router = useRouter();
+    
     const deleteListing = async event => {
         event.preventDefault();
 
         const res = await axios.delete(`http://localhost:3000/api/boardgames/${event.target.id.value}`)
-        const path = "createListing/" + props.userData.email;
         console.log(res);
+        window.location.reload(false);
     }
 
-    const router = useRouter();
-
+   
     return (
         <div>
             <h1 className="mt-7 w-5/6 mx-auto text-3xl">My Listings</h1>
