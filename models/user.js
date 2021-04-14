@@ -37,5 +37,9 @@ const userSchema = new mongoose.Schema({
         timestamps: true
     }
 )
-
-module.exports = mongoose.model('User') || mongoose.model('User', userSchema);
+if (!mongoose.models['User']) {
+    module.exports = mongoose.model('User', userSchema);
+} else {
+    module.exports = mongoose.models['User']
+}
+//module.exports = mongoose.models['User'] ?? mongoose.model('User', userSchema);

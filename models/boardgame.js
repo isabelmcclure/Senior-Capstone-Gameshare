@@ -60,4 +60,9 @@ const boardGameSchema = new mongoose.Schema({
 
 )
 
-module.exports = mongoose.model('Boardgame') || mongoose.model('Boardgame', boardGameSchema);
+//console.log(mongoose.models['boardgames'])
+if (mongoose.models['boardgames'] == undefined) {
+    module.exports = mongoose.model('boardgames', boardGameSchema);
+} else {
+    module.exports = mongoose.models['boardgames']
+}
