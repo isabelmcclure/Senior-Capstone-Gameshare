@@ -1,44 +1,78 @@
-const QueryListing = () => {
-    return ( 
+import React, {Component, useState } from 'react';
+import QueryBar from "../components/QueryBar";
+
+const QueryListing = (props) => {
+
+    const [title, setTitle] = useState("");
+    const [max_price, setMaxPrice] = useState("");
+    const [bg_filtered, setBG] = useState(listings);
+
+    let listings;
+    
+    const handleGameNameQuery = (e) => {
+        setTitle(e.target.value);
+    }
+
+    const handlePriceQuery = (e) => {
+        setMaxPrice(e.target.value);
+    }
+    
+    const handleSubmit = (e) => {
+        // prevent form from refreshing the page
+        e.preventDefault();
+
+        // reset bg_filtered state variable
+        listings = props.listings;
+
+        if(title !== ""){
+            listings = listings.filter((bg) => bg.title.toLowerCase().includes(title.toLowerCase()));
+        }
+        
+        if(max_price != ""){
+            listings = listings.filter((bg) => bg.price <= max_price);
+        }
+
+        setBG(listings);
+    }
+
+    return (
         <div>
-        <h1 className="mt-7 w-5/6 mx-auto text-3xl">Current Listings</h1>
-        <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
-            <tr class="text-left border-b-2 border-gray-300">
-                <th class="px-4 py-3">Game</th>
-                <th class="px-4 py-3">Price</th>
-                <th class="px-4 py-3">Date Posted</th>
-                <th class="px-4 py-3"> </th>
-            </tr>
-            
-            <tr class="bg-gray-100 border-b border-gray-200">
-                <td class="px-4 py-3">Monopoly</td>
-                <td class="px-4 py-3">$40.00</td>
-                <td class="px-4 py-3">2/3/21</td>
-                <td class="px-4 py-3">
-                    <button className="bg-blue-500 p-2 rounded text-green-200">Edit</button>
-                </td>
-            </tr> 
+            {/* <QueryBar> */}
+            <QueryBar handleSubmit={handleSubmit} 
+                    handleGameNameQuery={handleGameNameQuery} 
+                    handlePriceQuery={handlePriceQuery}>
+            </QueryBar>
 
-            <tr class="bg-gray-100 border-b border-gray-200">
-                <td class="px-4 py-3">JavaScript Jigsaw</td>
-                <td class="px-4 py-3">$2.00</td>
-                <td class="px-4 py-3">4/2/2020</td>
-                <td class="px-4 py-3">
-                    <button className="bg-blue-500 p-2 rounded text-green-200">Edit</button>
-                </td>
-            </tr> 
+            <h1 className="mt-7 w-5/6 mx-auto text-3xl">Current Listings</h1>
+            <table className="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
+                <tbody>
+                    <tr className="text-left border-b-2 border-gray-300">
+                        <th className="px-4 py-3">Game</th>
+                        <th className="px-4 py-3">Price</th>
+                        <th className="px-4 py-3">Date Posted</th>
+                        <th className="px-4 py-3"> </th>
+                    </tr>
 
-            <tr class="bg-gray-100 border-b border-gray-200">
-                <td class="px-4 py-3">Booooootstrap</td>
-                <td class="px-4 py-3">$144.98</td>
-                <td class="px-4 py-3">3/2/2019</td>
-                <td class="px-4 py-3">
-                    <button className="bg-blue-500 p-2 rounded text-green-200">Edit</button>
-                </td>
-            </tr> 
-        </table>
-    </div>
-     );
+                    {bg_filtered.map((boardgame) => {
+                        return (
+                            <tr className="bg-gray-100 border-b border-gray-200" key={boardgame._id}>
+                                <td className="px-4 py-3">{boardgame.title}</td>
+                                <td className="px-4 py-3">${boardgame.price}</td>
+                                <td className="px-4 py-3">{boardgame.postedAt}</td>
+                                <td className="px-4 py-3">
+                                    {/* <Link href={`/listings/${boardgame._id}`}><button className="bg-blue-500 p-2 rounded text-green-200">View</button></Link> */}
+                                    <button className="bg-blue-500 p-2 rounded text-green-200">View</button>
+                                    <button className="bg-blue-500 p-2 rounded text-green-200">Edit</button>
+                                </td>
+                            </tr>
+                        )
+                    })}
+
+                </tbody>
+
+            </table>
+        </div>
+    );
 }
  
 export default QueryListing;
