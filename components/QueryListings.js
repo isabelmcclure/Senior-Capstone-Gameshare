@@ -5,8 +5,9 @@ const QueryListing = (props) => {
 
     const [title, setTitle] = useState("");
     const [max_price, setMaxPrice] = useState("");
-    const listings = props.listings;
     const [bg_filtered, setBG] = useState(listings);
+
+    let listings;
     
     const handleGameNameQuery = (e) => {
         setTitle(e.target.value);
@@ -21,19 +22,17 @@ const QueryListing = (props) => {
         e.preventDefault();
 
         // reset bg_filtered state variable
-        setBG(listings);
+        listings = props.listings;
 
         if(title !== ""){
-            const temp = bg_filtered.filter((bg) => bg.title === title);
-            setBG(temp);
+            listings = listings.filter((bg) => bg.title.toLowerCase().includes(title.toLowerCase()));
         }
-        console.log(bg_filtered);
         
         if(max_price != ""){
-            setBG(bg_filtered.filter((bg) => bg.price <= max_price));
+            listings = listings.filter((bg) => bg.price <= max_price);
         }
-        console.log(bg_filtered);
 
+        setBG(listings);
     }
 
     return (
