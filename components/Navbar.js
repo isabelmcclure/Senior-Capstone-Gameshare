@@ -17,6 +17,7 @@ const Navbar = () => {
                             <Link href="/"><a className="px-3 py-5">Home</a></Link>
                             <Link href="/dashboard"><a className="px-3 py-5">Dashboard</a></Link>
                             <Link href="/listings"><a className="px-3 py-5">Listings</a></Link>
+                            <Link href="/support"><a className="px-3 py-5">Support</a></Link>
                         </div>
                     </div>
 
