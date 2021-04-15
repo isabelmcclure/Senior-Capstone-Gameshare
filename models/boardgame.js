@@ -51,7 +51,8 @@ const boardGameSchema = new mongoose.Schema({
     },
     available: {
         type: Boolean,
-        required: [true]
+        required: [true],
+        default: true
     },
 },
     {
@@ -60,10 +61,10 @@ const boardGameSchema = new mongoose.Schema({
 
 )
 
-/*if(!mongoose.models['boardgame']){
-    module.exports = mongoose.model('boardgame', boardGameSchema);
-}else{
-    module.exports = mongoose.models['boardgame']
-}*/
+if (!mongoose.models['boardgames']) {
+    module.exports = mongoose.model('boardgames', boardGameSchema);
+} else {
+    module.exports = mongoose.models['boardgames']
+}
 
-module.exports = mongoose.model('boardgames') || mongoose.model('boardgames', boardGameSchema);
+//module.exports = mongoose.models('boardgames') || mongoose.model('boardgames', boardGameSchema);

@@ -6,12 +6,17 @@ import DatePicker from 'react-datepicker'
 import style from '../styles/RentingOption.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { loadStripe } from '@stripe/stripe-js';
+import { useRouter } from 'next/router'
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe('pk_test_51IdoMPBL7EVXf27y0v5tmJygTkTgd6iwveMdLQK4DH3oZ8fZZWp6yzxV03dX6ztZ8zNUt1RTDlRc1lX5kaW12jj6004Wl23sTl');
 
 
+
+
 export default function RentingOption(props) {
+
+  const router = useRouter()
 
   const handleClick = async (event) => {
     event.preventDefault();
@@ -25,11 +30,11 @@ export default function RentingOption(props) {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: JSON.stringify({ title: props.product, price: props.rate + '00' })
+      body: JSON.stringify({ title: props.product, price: props.rate + '00', path: router.pathname })
     });
 
     const session = await response.json();
-    console.log(session)
+    //console.log(session)
 
     // When the customer clicks on the button, redirect them to Checkout.
     const result = await stripe.redirectToCheckout({

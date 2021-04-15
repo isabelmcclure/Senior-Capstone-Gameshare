@@ -1,12 +1,13 @@
 import { useRouter } from 'next/router'
 
-const router = useRouter()
+
 
 export default async (req, res) => {
+
     const stripe = require('stripe')('sk_test_51IdoMPBL7EVXf27yRov1hIaRrRPbaUi0lS7YjYduTZLWUpw9u3rTFut2GB7Yu2QPHcRHu0t6RtYdKS691QcFpLVt00Fs1ArB3T')
 
 
-    console.log(req.body)
+    //console.log(req.body)
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items: [
@@ -23,11 +24,11 @@ export default async (req, res) => {
         ],
         mode: 'payment',
         success_url: 'http://localhost:3000/success',
-        cancel_url: router.back(),
+        cancel_url: window.location.href,
     });
 
     //console.log(session)
-    res.json({ id: session.id });
+    res.json({ id: session.id, confirm: "item has been paid for" });
 
 
 
