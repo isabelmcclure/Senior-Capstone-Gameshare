@@ -10,7 +10,7 @@ export default function Listing(props) {
     <div className={style.container}>
       <main>
           <h1 className={style.title}>{props.name}</h1>
-          <Images imageUrl={props.imageUrl}></Images>
+          <Images images={props.images}></Images>
           <h1 className={style.description}>What is {props.name}?</h1>
           {props.description}
           <h1 className={style.description}>Quailty: {props.quality}</h1>
