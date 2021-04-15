@@ -5,9 +5,9 @@ const QueryListing = (props) => {
 
     const [title, setTitle] = useState("");
     const [max_price, setMaxPrice] = useState("");
+    
+    let listings = props.listings;
     const [bg_filtered, setBG] = useState(listings);
-
-    let listings;
     
     const handleGameNameQuery = (e) => {
         setTitle(e.target.value);
