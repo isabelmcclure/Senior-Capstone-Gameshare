@@ -28,7 +28,7 @@ export default function CreateListing(props){
     setQuality(event.target.value)
   }
   const handleImageFileChange = (event) =>{
-    setImageFile(event.target.value)
+    setImageFile(event.target.files[0])
   }
   const handlePriceChange = (event) =>{
     setPrice(event.target.value)
@@ -79,7 +79,7 @@ export default function CreateListing(props){
     });
 
     console.log(gameRes.json());
-    //router.push("/dashboard")
+    router.push("/dashboard")
 
   }
 
