@@ -9,14 +9,22 @@ export default function Listing(props) {
 
     <div className={style.columnContainer}>
       <div className={style.rowContainer}>
-          <ModalImage className={style.image} small={props.images[0]} large={props.images[0]} alt="Vercel Logo"/>
-          <ModalImage className={style.image} small={props.images[1]} large={props.images[1]} alt="Vercel Logo"/>
-          <ModalImage className={style.image} small={props.images[2]} large={props.images[2]} alt="Vercel Logo"/>
+          {props.images.map((image, index) => {
+            if (index < 3){
+              return (
+                <ModalImage className={style.image} small={image} large={image} alt="Vercel Logo"/>
+              ) 
+            }
+          })}
       </div>
       <div className={style.rowContainer}>
-          <ModalImage className={style.image} small={props.images[3]} large={props.images[3]} alt="Vercel Logo"/>
-          <ModalImage className={style.image} small={props.images[4]} large={props.images[4]} alt="Vercel Logo"/>
-          <ModalImage className={style.image} small={props.images[5]} large={props.images[5]} alt="Vercel Logo"/>
+      {props.images.map((image, index) => {
+            if (index > 2){
+              return (
+                <ModalImage className={style.image} small={image} large={image} alt="Vercel Logo"/>
+              ) 
+            }
+          })}
       </div>
     </div>
   )
