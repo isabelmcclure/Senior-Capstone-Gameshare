@@ -112,7 +112,7 @@ export default function CreateListing(props){
           <span class="mt-2 text-base leading-normal">Select a file</span>
           <input type='file' class="hidden" onChange={handleImageFileChange}/>
           </label>
-          {imageFiles.map((image) => {return (<p>{image}</p>)})}
+          {imageFiles.map((image, index) => {return (<p>{index+1}. {image}</p>)})}
         </div>
         <div className="flex flex-col mb-4">
           <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="price">Price</label>
