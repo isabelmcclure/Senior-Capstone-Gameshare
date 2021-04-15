@@ -10,29 +10,38 @@ import { loadStripe } from '@stripe/stripe-js';
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe('pk_test_51IdoMPBL7EVXf27y0v5tmJygTkTgd6iwveMdLQK4DH3oZ8fZZWp6yzxV03dX6ztZ8zNUt1RTDlRc1lX5kaW12jj6004Wl23sTl');
 
-const handleClick = async (event) => {
-  // Get Stripe.js instance
-  const stripe = await stripePromise;
-
-  // Call your backend to create the Checkout Session
-  const response = await fetch('api/create-checkout-session', { method: 'POST' });
-
-  const session = await response.json();
-
-  // When the customer clicks on the button, redirect them to Checkout.
-  const result = await stripe.redirectToCheckout({
-    sessionId: session.id,
-  });
-
-  if (result.error) {
-    // If `redirectToCheckout` fails due to a browser or network
-    // error, display the localized error message to your customer
-    // using `result.error.message`.
-  }
-};
-
 
 export default function RentingOption(props) {
+
+  const handleClick = async (event) => {
+    event.preventDefault();
+    // Get Stripe.js instance
+    const stripe = await stripePromise;
+
+
+    // Call your backend to create the Checkout Session
+    const response = await fetch('../api/create-checkout-session', {
+      method: 'POST', headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ title: props.product, price: props.rate + '00' })
+    });
+
+    const session = await response.json();
+    console.log(session)
+
+    // When the customer clicks on the button, redirect them to Checkout.
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+
+    if (result.error) {
+      // If `redirectToCheckout` fails due to a browser or network
+      // error, display the localized error message to your customer
+      // using `result.error.message`.
+    }
+  };
 
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
@@ -63,7 +72,9 @@ export default function RentingOption(props) {
       <div clasName={style.rowContainer}>
         <Button className={style.btn} variant="danger">Report</Button>
         <Button className={style.btn} variant="secondary">Contact Lender</Button>
-        <Button className={style.btn} onClick={handleClick}>Rent</Button>
+
+        <Button className={style.btn} role="link" onClick={handleClick}>Rent</Button>
+
       </div>
     </div>
   )

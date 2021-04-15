@@ -8,6 +8,7 @@ const MyListings = (props) => {
         event.preventDefault();
 
         const res = await axios.delete(`http://localhost:3000/api/boardgames/${event.target.id.value}`)
+        const path = "createListing/" + props.userData.email;
         console.log(res);
     }
 
@@ -27,7 +28,7 @@ const MyListings = (props) => {
                         <th className="px-4 py-3">Actions</th>
                     </tr>
 
-                    {/*props.userData.boardgames.map is the right one, but i'm not pulling the correct user right now.*/}
+                    {/*props.userData.boardgames.map*/}
                     {props.userBoardgames.map((boardgame) => {
                         return (
                             <tr className="bg-gray-100 border-b border-gray-200" key={boardgame.title}>
@@ -52,7 +53,7 @@ const MyListings = (props) => {
                 </tbody>
             </table>
             <div className="pt-5 p-28">
-                <button className="font-mono bg-blue-500 p-2 mr-2 rounded text-green-200" onClick={() => { router.push('/create_listing') }}>Add New Listing</button>
+                <button className="font-mono bg-blue-500 p-2 mr-2 rounded text-green-200" onClick={() => { router.push("newListing/") }}>Add New Listing</button>
             </div>
         </div>
     );
