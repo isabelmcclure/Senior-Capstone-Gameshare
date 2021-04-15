@@ -2,6 +2,7 @@ import React, {Component, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import redirect from 'nextjs-redirect'
 import { route } from 'next/dist/next-server/server/router';
+import { isAssetError } from 'next/dist/client/route-loader';
 //import boardgameImage from '.public/boardgame.jpeg'
 
 export default function CreateListing(props){
@@ -11,7 +12,8 @@ export default function CreateListing(props){
   const[title, setTitle] = useState("");
   const[description, setDescription] = useState("");
   const[quality, setQuality] = useState("");
-  const[imageFile, setImageFile] = useState("");
+  const[imageURLs, setImageURLs] = useState([]);
+  const[imageFiles, setImageFiles] = useState([]);
   const[price, setPrice] = useState("");
   const[startDate, setStartDate] = useState("");
   const[endDate, setEndDate] = useState("");
@@ -27,8 +29,20 @@ export default function CreateListing(props){
   const handleQualityChange = (event) =>{
     setQuality(event.target.value)
   }
-  const handleImageFileChange = (event) =>{
-    setImageFile(event.target.files[0])
+  const handleImageFileChange = async (event) =>{
+    const files = event.target.files[0];
+    setImageFiles(imageFiles => [...imageFiles, files.name])
+    const data = new FormData();
+    data.append('file', files);
+    data.append('upload_preset', 'GameShareImages')
+    
+    const res = await fetch('https://api.cloudinary.com/v1_1/dyd5yuvop/image/upload', {
+      method: 'POST',
+      body:data
+    });
+
+    const file = await res.json();
+    setImageURLs(imageURLs => [...imageURLs, file.secure_url])
   }
   const handlePriceChange = (event) =>{
     setPrice(event.target.value)
@@ -45,22 +59,10 @@ export default function CreateListing(props){
   const handleSubmit = async (event) =>{
     event.preventDefault();
 
-    const files = imageFile;
-    const data = new FormData();
-    data.append('file', files);
-    data.append('upload_preset', 'GameShareImages')
-    
-    const res = await fetch('https://api.cloudinary.com/v1_1/dyd5yuvop/image/upload', {
-      method: 'POST',
-      body:data
-    });
-
-    const file = await res.json();
-
     const boardGameData = JSON.stringify({ title: title,
     description: description,
     quality: quality,
-    img: file.secure_url,
+    images: imageURLs,
     price: price,
     genre: "test genre",
     numPlayers: 5,
@@ -110,6 +112,7 @@ export default function CreateListing(props){
           <span class="mt-2 text-base leading-normal">Select a file</span>
           <input type='file' class="hidden" onChange={handleImageFileChange}/>
           </label>
+          {imageFiles.map((image) => {return (<p>{image}</p>)})}
         </div>
         <div className="flex flex-col mb-4">
           <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="price">Price</label>
