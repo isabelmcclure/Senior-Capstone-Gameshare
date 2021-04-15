@@ -63,7 +63,6 @@ const QueryListing = (props) => {
                                 <td className="px-4 py-3">
                                     {/* <Link href={`/listings/${boardgame._id}`}><button className="bg-blue-500 p-2 rounded text-green-200">View</button></Link> */}
                                     <Link href={`/listings/${boardgame._id}`}><button className="bg-blue-500 p-2 rounded text-green-200 px-2">View</button></Link>
-                                    <Link href={`/editListing/${boardgame._id}`}><button className="bg-blue-500 p-2 rounded text-green-200">Edit</button></Link> 
                                 </td>
                             </tr>
                         )
