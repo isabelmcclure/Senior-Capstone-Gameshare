@@ -73,27 +73,23 @@ class CreateListing extends Component {
     // coordinates calculation
     const opencage = require('opencage-api-client');
 
-    opencage.geocode({q: this.state.location, limit: 1, countrycode: 'us'}).then(data => {
-    //console.log(JSON.stringify(data));
-    if (data.status.code === 200) {
-        if (data.results.length > 0) {
-        var place = data.results[0];
+    const geo = await opencage.geocode({q: this.state.location, limit: 1, countrycode: 'us'});
+    //console.log(JSON.stringify(geo));
+    if (geo.status.code === 200) {
+        if (geo.results.length > 0) {
+        var place = geo.results[0];
         console.log(place.geometry);
         this.setState({lat: place.geometry.lat});
         this.setState({lng: place.geometry.lng});
         }
-    } else if (data.status.code === 402) {
+    } else if (geo.status.code === 402) {
         console.log('hit free trial daily limit');
         console.log('become a customer: https://opencagedata.com/pricing'); 
     } else {
         // other possible response codes:
         // https://opencagedata.com/api#codes
-        console.log('error', data.status.message);
+        console.log('error', geo.status.message);
     }
-    }).catch(error => {
-    console.log('error', error.message);
-    });
-    //console.log(router.query.location);
     ///////////////////////////////////////
 
     const boardGameData = JSON.stringify({ title: this.state.gameName,
