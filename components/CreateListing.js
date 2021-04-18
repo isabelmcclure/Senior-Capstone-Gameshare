@@ -64,7 +64,7 @@ export default function CreateListing(props){
     // coordinates calculation
     const opencage = require('opencage-api-client');
 
-    const geo = await opencage.geocode({key: process.env.OCD_API_KEY, q: this.state.location, limit: 1, countrycode: 'us'});
+    const geo = await opencage.geocode({key: process.env.OCD_API_KEY, q: location, limit: 1, countrycode: 'us'});
     //console.log(JSON.stringify(geo));
     if (geo.status.code === 200) {
         if (geo.results.length > 0) {
