@@ -8,7 +8,7 @@ import Boardgame from '../../models/boardgame'
 dbConnect();
 
 export default async (req, res) => {
-    console.log("userMagic")
+    //console.log("userMagic")
     let userMagic;
     try {
         userMagic = await Iron.unseal(CookieService.getAuthToken(req.cookies), process.env.ENCRYPTION_SECRET, Iron.defaults)
@@ -20,7 +20,7 @@ export default async (req, res) => {
     // now we have access to the data inside of user
     // and we could make database calls or just send back what we have
     // in the token.
-    console.log("newUser")
+    //console.log("newUser")
     let newUser;
     try {
         newUser = await User.findOneAndUpdate({ email: userMagic.email }, { email: userMagic.email, username: userMagic.email }, { upsert: true, new: true })

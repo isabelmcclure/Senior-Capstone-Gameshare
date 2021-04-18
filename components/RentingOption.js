@@ -25,12 +25,12 @@ export default function RentingOption(props) {
 
 
     // Call your backend to create the Checkout Session
-    const response = await fetch('../api/create-checkout-session', {
+    const response = await fetch('../api/checkout/create-checkout-session', {
       method: 'POST', headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: JSON.stringify({ title: props.product, price: props.rate + '00', path: router.pathname })
+      body: JSON.stringify({ title: props.product, price: props.rate + '00', path: window.location.href, productID: props.id })
     });
 
     const session = await response.json();
@@ -75,11 +75,9 @@ export default function RentingOption(props) {
       <img className={style.image} src='/location.png' />
       <h1 className={style.description}>Amount to rent: ${rentAmount}</h1>
       <div clasName={style.rowContainer}>
-        <Button className={style.btn} variant="danger">Report</Button>
-        <Button className={style.btn} variant="secondary">Contact Lender</Button>
-
-        <Button className={style.btn} role="link" onClick={handleClick}>Rent</Button>
-
+        <button className="bg-blue-500 p-2 rounded text-green-200">Report</button>
+        <button className="bg-blue-500 p-2 rounded text-green-200">Contact Lender</button>
+        <button className="bg-blue-500 p-2 rounded text-green-200" role="link" onClick={handleClick}>Rent</button>
       </div>
     </div>
   )

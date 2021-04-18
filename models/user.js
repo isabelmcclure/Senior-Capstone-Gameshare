@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { default: postcss } = require('postcss')
 
-const userSchema = new mongoose.Schema({
+const userSchema = mongoose.Schema({
     email: {
         type: String,
         lowercase: true,

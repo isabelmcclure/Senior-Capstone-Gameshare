@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { default: postcss } = require('postcss')
 
-const boardGameSchema = new mongoose.Schema({
+const boardGameSchema = mongoose.Schema({
     title:
     {
         type: String,

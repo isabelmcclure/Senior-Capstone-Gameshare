@@ -22,13 +22,19 @@ export default async (req, res) => {
                 quantity: 1,
             },
         ],
+        /*payment_intent_data: {
+            application_fee_amount: 123,
+            transfer_data: {
+                destination: '{{CONNECTED_ACCOUNT_ID}}',
+            },
+        },*/
         mode: 'payment',
-        success_url: 'http://localhost:3000/success',
-        cancel_url: window.location.href,
+        success_url: 'http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url: req.body.path,
     });
 
     //console.log(session)
-    res.json({ id: session.id, confirm: "item has been paid for" });
+    res.json({ id: session.id, productID: req.body.id });
 
 
 

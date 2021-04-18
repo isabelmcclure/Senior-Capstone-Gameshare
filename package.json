@@ -21,6 +21,7 @@
     "next": "^10.0.6",
     "nextjs-redirect": "^5.0.2",
     "opencage-api-client": "^1.0.0",
+    "raw-body": "^2.4.1",
     "react": "17.0.1",
     "react-big-calendar": "^0.33.2",
     "react-bootstrap": "^1.5.2",
