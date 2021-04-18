@@ -1,10 +1,10 @@
-import Login from '../pages/login.js'
+import LogInSignUp from '../components/LogInSignUp'
 
 export default function SignUp() {
 
     return (
         <div>
-            <Login></Login>
+            <LogInSignUp type="Sign Up"></LogInSignUp>
         </div>
 
     )
