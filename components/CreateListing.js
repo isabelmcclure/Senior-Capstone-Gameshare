@@ -2,6 +2,7 @@ import React, {Component, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import redirect from 'nextjs-redirect'
 import { route } from 'next/dist/next-server/server/router';
+import { isAssetError } from 'next/dist/client/route-loader';
 //import boardgameImage from '.public/boardgame.jpeg'
 
 export default function CreateListing(props){
@@ -11,11 +12,14 @@ export default function CreateListing(props){
   const[title, setTitle] = useState("");
   const[description, setDescription] = useState("");
   const[quality, setQuality] = useState("");
-  const[imageFile, setImageFile] = useState("");
+  const[imageURLs, setImageURLs] = useState([]);
+  const[imageFiles, setImageFiles] = useState([]);
   const[price, setPrice] = useState("");
   const[startDate, setStartDate] = useState("");
   const[endDate, setEndDate] = useState("");
   const[location, setLocation] = useState("");
+  const[lat, setLat] = useState("");
+  const[lng, setLng] = useState("");
   const[email, setEmail] = useState(props.userData.email);
 
   const handleTitleChange = (event) =>{
@@ -27,8 +31,20 @@ export default function CreateListing(props){
   const handleQualityChange = (event) =>{
     setQuality(event.target.value)
   }
-  const handleImageFileChange = (event) =>{
-    setImageFile(event.target.files[0])
+  const handleImageFileChange = async (event) =>{
+    const files = event.target.files[0];
+    setImageFiles(imageFiles => [...imageFiles, files.name])
+    const data = new FormData();
+    data.append('file', files);
+    data.append('upload_preset', 'GameShareImages')
+    
+    const res = await fetch('https://api.cloudinary.com/v1_1/dyd5yuvop/image/upload', {
+      method: 'POST',
+      body:data
+    });
+
+    const file = await res.json();
+    setImageURLs(imageURLs => [...imageURLs, file.secure_url])
   }
   const handlePriceChange = (event) =>{
     setPrice(event.target.value)
@@ -45,27 +61,39 @@ export default function CreateListing(props){
   const handleSubmit = async (event) =>{
     event.preventDefault();
 
-    const files = imageFile;
-    const data = new FormData();
-    data.append('file', files);
-    data.append('upload_preset', 'GameShareImages')
-    
-    const res = await fetch('https://api.cloudinary.com/v1_1/dyd5yuvop/image/upload', {
-      method: 'POST',
-      body:data
-    });
+    // coordinates calculation
+    const opencage = require('opencage-api-client');
 
-    const file = await res.json();
+    const geo = await opencage.geocode({key: process.env.OCD_API_KEY, q: this.state.location, limit: 1, countrycode: 'us'});
+    //console.log(JSON.stringify(geo));
+    if (geo.status.code === 200) {
+        if (geo.results.length > 0) {
+        var place = geo.results[0];
+        console.log(place.geometry);
+        setLat(place.geometry.lat);
+        setLng(place.geometry.lng);
+        }
+    } else if (geo.status.code === 402) {
+        console.log('hit free trial daily limit');
+        console.log('become a customer: https://opencagedata.com/pricing'); 
+    } else {
+        // other possible response codes:
+        // https://opencagedata.com/api#codes
+        console.log('error', geo.status.message);
+    }
+    ///////////////////////////////////////
 
     const boardGameData = JSON.stringify({ title: title,
     description: description,
     quality: quality,
-    img: file.secure_url,
+    images: imageURLs,
     price: price,
     genre: "test genre",
     numPlayers: 5,
     duration: startDate,
     location: location,
+    lat: lat,
+    lng: lng,
     ownerID: email,
     available: true})
 
@@ -102,7 +130,7 @@ export default function CreateListing(props){
           <input className="border py-2 px-3 text-grey-darkest" type="text" name="quality" id="quality" onChange={handleQualityChange}></input>
         </div>
         <div className="flex flex-col mb-4">
-          <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="pictures">Pictures</label>
+          <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="pictures">Pictures (Add up to 6)</label>
           <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue-900 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue-200 hover:text-blue-800">
           <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
@@ -110,6 +138,7 @@ export default function CreateListing(props){
           <span class="mt-2 text-base leading-normal">Select a file</span>
           <input type='file' class="hidden" onChange={handleImageFileChange}/>
           </label>
+          {imageFiles.map((image, index) => {return (<p>{index+1}. {image}</p>)})}
         </div>
         <div className="flex flex-col mb-4">
           <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="price">Price</label>

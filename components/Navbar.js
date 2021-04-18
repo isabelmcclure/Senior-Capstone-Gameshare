@@ -24,7 +24,7 @@ const Navbar = () => {
                     {/* secondary nav */}
                     <div className="flex justify-between space-x-1">
                         <Link href="/login"><a className="px-3 py-5">Login</a></Link>
-                        <Link href="#"><a className="px-3 py-5">Sign Up</a></Link>
+                        <Link href="/signUp"><a className="px-3 py-5">Sign Up</a></Link>
                     </div>
 
                 </div>

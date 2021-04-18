@@ -15,7 +15,7 @@ export default function id({ boardgame }) {
     < div className={style.columnContainer} >
       <div className={style.rowContainer}>
         <div className={style.secondaryColumnContainer}>
-          <Listing name={boardgame.title} quality={boardgame.quality} description={boardgame.description} imageUrl={boardgame.img} rate={boardgame.price}></Listing>
+          <Listing name={boardgame.title} quality={boardgame.quality} description={boardgame.description} images={boardgame.images} rate={boardgame.price}></Listing>
         </div>
         <RentingOption rate={boardgame.price} product={boardgame.title} id={boardgame._id} />
       </div>

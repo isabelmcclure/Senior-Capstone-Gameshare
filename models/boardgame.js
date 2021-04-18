@@ -20,10 +20,12 @@ const boardGameSchema = mongoose.Schema({
         min: 1,
         max: 5,
     },
-    img: {
-        type: String,
-        required: [true]
-    },
+    images: [
+        {
+            type: String,
+            required: [true]
+        }
+    ],
     price: {
         type: Number,
         required: [true]
