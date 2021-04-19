@@ -1,7 +1,11 @@
 const mongoose = require('mongoose')
 const { default: postcss } = require('postcss')
 
-const userSchema = new mongoose.Schema({
+
+
+delete mongoose.connection.models['User'];
+
+const userSchema = mongoose.Schema({
     email: {
         type: String,
         lowercase: true,
@@ -38,9 +42,9 @@ const userSchema = new mongoose.Schema({
     }
 )
 
-if(!mongoose.models['User']){
+if (!mongoose.models['User']) {
     module.exports = mongoose.model('User', userSchema);
-}else{
+} else {
     module.exports = mongoose.models['User']
 }
 

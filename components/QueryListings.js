@@ -1,4 +1,4 @@
-import React, {Component, useState } from 'react';
+import React, { Component, useState } from 'react';
 import Link from 'next/link'
 import QueryBar from "../components/QueryBar";
 
@@ -6,10 +6,10 @@ const QueryListing = (props) => {
 
     const [title, setTitle] = useState("");
     const [max_price, setMaxPrice] = useState("");
-    
+
     let listings = props.listings;
     const [bg_filtered, setBG] = useState(listings);
-    
+
     const handleGameNameQuery = (e) => {
         setTitle(e.target.value);
     }
@@ -17,7 +17,7 @@ const QueryListing = (props) => {
     const handlePriceQuery = (e) => {
         setMaxPrice(e.target.value);
     }
-    
+
     const handleSubmit = (e) => {
         // prevent form from refreshing the page
         e.preventDefault();
@@ -25,11 +25,11 @@ const QueryListing = (props) => {
         // reset bg_filtered state variable
         listings = props.listings;
 
-        if(title !== ""){
+        if (title !== "") {
             listings = listings.filter((bg) => bg.title.toLowerCase().includes(title.toLowerCase()));
         }
-        
-        if(max_price != ""){
+
+        if (max_price != "") {
             listings = listings.filter((bg) => bg.price <= max_price);
         }
 
@@ -39,9 +39,9 @@ const QueryListing = (props) => {
     return (
         <div>
             {/* <QueryBar> */}
-            <QueryBar handleSubmit={handleSubmit} 
-                    handleGameNameQuery={handleGameNameQuery} 
-                    handlePriceQuery={handlePriceQuery}>
+            <QueryBar handleSubmit={handleSubmit}
+                handleGameNameQuery={handleGameNameQuery}
+                handlePriceQuery={handlePriceQuery}>
             </QueryBar>
 
             <h1 className="mt-7 w-5/6 mx-auto text-3xl">Current Listings</h1>
@@ -74,5 +74,5 @@ const QueryListing = (props) => {
         </div>
     );
 }
- 
+
 export default QueryListing;

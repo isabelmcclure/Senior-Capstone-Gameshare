@@ -1,32 +1,19 @@
-import axios from 'axios'
+import EditProfileFields from '../components/EditProfileFields'
+import useAuth from '../hooks/useAuth'
+import Error from 'next/error'
 
 export default function EditProfile(props) {
+    const { data, loading, error } = useAuth();
 
-    const profileUpdate = async event => {
-        event.preventDefault()
-
-        const res = await axios.put(`http://localhost:3000/api/users/`, {
-            username: event.target.username.value,
-            location: event.target.location.value
-        })
-
-        const result = res.json()
+    //console.log(data)
+    if (!data) {
+        return <Error statusCode={404} />
     }
-
     return (
-        <div className="container w-1/2 mx-auto pt-4">
-            <h1 className="uppercase text-3xl font-bold">Edit Profile</h1>
-            <form className="grid justify-center" onSubmit={profileUpdate}>
-                <div>
-                    <label className="">Username</label> <br />
-                    <input type="text" id="username" name="username" className="border mb-4"></input>
-                </div>
-                <div>
-                    <label className="">Location</label> <br />
-                    <input type="text" id="location" name="location" className="border mb-4"></input>
-                </div>
-                <input type="submit" value="Submit" />
-            </form>
+
+        <div>
+            <EditProfileFields userData={data.userD}></EditProfileFields>
         </div>
+
     )
 }

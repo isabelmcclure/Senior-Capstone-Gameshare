@@ -51,9 +51,18 @@ const boardGameSchema = new mongoose.Schema({
         type: String,
         required: [true]
     },
+    lat: {
+        type: Number,
+        required: [true]
+    },
+    lng: {
+        type: Number,
+        requred: [true]
+    },
     available: {
         type: Boolean,
-        required: [true]
+        required: [true],
+        default: true
     },
     lat: {
         type: Number,
@@ -70,10 +79,11 @@ const boardGameSchema = new mongoose.Schema({
 
 )
 
-/*if(!mongoose.models['boardgame']){
-    module.exports = mongoose.model('boardgame', boardGameSchema);
-}else{
-    module.exports = mongoose.models['boardgame']
-}*/
-
-module.exports = mongoose.model('Boardgame') || mongoose.model('Boardgame', boardGameSchema);
+if (!mongoose.models['Boardgame']) {
+    module.exports = mongoose.model('Boardgame', boardGameSchema);
+} else {
+    module.exports = mongoose.models['Boardgame']
+}
+/*
+export default mongoose.models.Boardgame || mongoose.model('Boardgame', boardGameSchema)
+*/

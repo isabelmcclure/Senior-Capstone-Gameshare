@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 export default function Dashboard() {
     const { data, loading, error } = useAuth();
 
-    console.log(data)
+    //console.log(data)
     if (!data) {
         return <Error statusCode={404} />
     }
