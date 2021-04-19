@@ -1,5 +1,8 @@
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
+import dbConnect from '../util/dbConnect'
+import Boardgame from '../models/boardgame'
+
 
 export default function Success() {
     const router = useRouter();
@@ -11,7 +14,9 @@ export default function Success() {
         (url) => fetch(url).then(res => res.json())
     )
     const { session_id } = router.query
-    //console.log(router.query)
+    //console.log(data.session.payment_intent.charges.data.name)
+
+    //console.log(JSON.stringify(data[1], null, 2))
 
     return (
         <div >

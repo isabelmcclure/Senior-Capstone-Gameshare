@@ -11,9 +11,6 @@ import { useRouter } from 'next/router'
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe('pk_test_51IdoMPBL7EVXf27y0v5tmJygTkTgd6iwveMdLQK4DH3oZ8fZZWp6yzxV03dX6ztZ8zNUt1RTDlRc1lX5kaW12jj6004Wl23sTl');
 
-
-
-
 export default function RentingOption(props) {
 
   const router = useRouter()

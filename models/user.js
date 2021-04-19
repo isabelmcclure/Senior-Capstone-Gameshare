@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
 const { default: postcss } = require('postcss')
 
+
+
+delete mongoose.connection.models['User'];
+
 const userSchema = mongoose.Schema({
     email: {
         type: String,

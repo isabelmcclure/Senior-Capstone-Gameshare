@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { default: postcss } = require('postcss')
 
-const boardGameSchema = mongoose.Schema({
+const boardGameSchema = new mongoose.Schema({
     title:
     {
         type: String,
@@ -71,10 +71,11 @@ const boardGameSchema = mongoose.Schema({
 
 )
 
-if (!mongoose.models['boardgames']) {
-    module.exports = mongoose.model('boardgames', boardGameSchema);
+if (!mongoose.models['Boardgame']) {
+    module.exports = mongoose.model('Boardgame', boardGameSchema);
 } else {
-    module.exports = mongoose.models['boardgames']
+    module.exports = mongoose.models['Boardgame']
 }
-
-//module.exports = mongoose.models('boardgames') || mongoose.model('boardgames', boardGameSchema);
+/*
+export default mongoose.models.Boardgame || mongoose.model('Boardgame', boardGameSchema)
+*/

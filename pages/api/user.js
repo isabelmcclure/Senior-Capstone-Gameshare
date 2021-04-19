@@ -5,9 +5,9 @@ import dbConnect from '../../util/dbConnect'
 import User from '../../models/user'
 import Boardgame from '../../models/boardgame'
 
-dbConnect();
-
 export default async (req, res) => {
+    await dbConnect();
+
     //console.log("userMagic")
     let userMagic;
     try {
@@ -67,7 +67,7 @@ export default async (req, res) => {
         userB: userBoardgames
     }
 
-    console.log(user);
+    //console.log(user);
     res.json(user);
 
 
