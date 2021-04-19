@@ -20,10 +20,12 @@ const boardGameSchema = new mongoose.Schema({
         min: 1,
         max: 5,
     },
-    img: {
-        type: String,
-        required: [true]
-    },
+    images: [
+        {
+            type: String,
+            required: [true]
+        }
+    ],
     price: {
         type: Number,
         required: [true]
@@ -59,5 +61,11 @@ const boardGameSchema = new mongoose.Schema({
     }
 
 )
+
+/*if(!mongoose.models['boardgame']){
+    module.exports = mongoose.model('boardgame', boardGameSchema);
+}else{
+    module.exports = mongoose.models['boardgame']
+}*/
 
 module.exports = mongoose.model('Boardgame') || mongoose.model('Boardgame', boardGameSchema);

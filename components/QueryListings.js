@@ -1,10 +1,49 @@
-import boardgame from "../models/boardgame";
+import React, {Component, useState } from 'react';
 import Link from 'next/link'
+import QueryBar from "../components/QueryBar";
 
+const QueryListing = (props) => {
 
-function QueryListing(props) {
+    const [title, setTitle] = useState("");
+    const [max_price, setMaxPrice] = useState("");
+    
+    let listings = props.listings;
+    const [bg_filtered, setBG] = useState(listings);
+    
+    const handleGameNameQuery = (e) => {
+        setTitle(e.target.value);
+    }
+
+    const handlePriceQuery = (e) => {
+        setMaxPrice(e.target.value);
+    }
+    
+    const handleSubmit = (e) => {
+        // prevent form from refreshing the page
+        e.preventDefault();
+
+        // reset bg_filtered state variable
+        listings = props.listings;
+
+        if(title !== ""){
+            listings = listings.filter((bg) => bg.title.toLowerCase().includes(title.toLowerCase()));
+        }
+        
+        if(max_price != ""){
+            listings = listings.filter((bg) => bg.price <= max_price);
+        }
+
+        setBG(listings);
+    }
+
     return (
         <div>
+            {/* <QueryBar> */}
+            <QueryBar handleSubmit={handleSubmit} 
+                    handleGameNameQuery={handleGameNameQuery} 
+                    handlePriceQuery={handlePriceQuery}>
+            </QueryBar>
+
             <h1 className="mt-7 w-5/6 mx-auto text-3xl">Current Listings</h1>
             <table className="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
                 <tbody>
@@ -15,15 +54,15 @@ function QueryListing(props) {
                         <th className="px-4 py-3"> </th>
                     </tr>
 
-                    {props.listings.map((boardgame) => {
+                    {bg_filtered.map((boardgame) => {
                         return (
-                            <tr className="bg-gray-100 border-b border-gray-200">
+                            <tr className="bg-gray-100 border-b border-gray-200" key={boardgame._id}>
                                 <td className="px-4 py-3">{boardgame.title}</td>
                                 <td className="px-4 py-3">${boardgame.price}</td>
                                 <td className="px-4 py-3">{boardgame.postedAt}</td>
                                 <td className="px-4 py-3">
-                                    <Link href={`/listings/${boardgame._id}`}><button className="bg-blue-500 p-2 rounded text-green-200">View</button></Link>
-                                    <button className="bg-blue-500 p-2 rounded text-green-200">Edit</button>
+                                    {/* <Link href={`/listings/${boardgame._id}`}><button className="bg-blue-500 p-2 rounded text-green-200">View</button></Link> */}
+                                    <Link href={`/listings/${boardgame._id}`}><button className="bg-blue-500 p-2 rounded text-green-200 px-2">View</button></Link>
                                 </td>
                             </tr>
                         )
@@ -35,5 +74,5 @@ function QueryListing(props) {
         </div>
     );
 }
-
+ 
 export default QueryListing;

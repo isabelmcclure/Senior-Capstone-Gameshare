@@ -1,14 +1,13 @@
 import useAuth from '../hooks/useAuth'
 import Error from 'next/error'
-import MyListings from "../components/MyListings";
-import UserBar from "../components/UserBar";
+import CreateListing from "../components/CreateListing";
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-export default function Dashboard() {
+export default function NewListing() {
     const { data, loading, error } = useAuth();
 
-    console.log(data)
+    //console.log(data)
     if (!data) {
         return <Error statusCode={404} />
     }
@@ -25,8 +24,7 @@ export default function Dashboard() {
                 <link rel="icon" href="/GS.png" />
             </Head>
 
-            <UserBar userData={data.userD}></UserBar>
-            <MyListings userBoardgames={data.userB}></MyListings>
+            <CreateListing userData={data.userD}></CreateListing>
         </div>
 
     )

@@ -1,37 +1,17 @@
+<<<<<<< HEAD
 import { useRouter } from 'next/router'
 import { Magic } from 'magic-sdk'
 import styles from '../styles/Home.module.css'
 import Head from 'next/head'
+=======
+import LogInSignUp from '../components/LogInSignUp.js'
+>>>>>>> main
 
 export default function Login() {
-    const router = useRouter()
-    const handleSubmit = async (event) => {
-        event.preventDefault()
-
-        const { elements } = event.target;
-
-        // the magic code
-        const did = await new Magic(process.env.NEXT_PUBLIC_MAGIC_PUB_KEY)
-            .auth
-            .loginWithMagicLink({ email: elements.email.value })
-
-        // Once we have the did from magic, login with our own API
-        const authRequest = await fetch('/api/login', {
-            method: 'POST',
-            headers: { Authorization: `Bearer ${did}` }
-        })
-
-        if (authRequest.ok) {
-            // We successfully logged in, our API
-            // set authorization cookies and now we
-            // can redirect to the dashboard!
-            router.push('/dashboard')
-        } else {
-            throw new Error(await authRequest.text())
-        }
-    }
+  
 
     return (
+<<<<<<< HEAD
         <div className= {styles.login}>
             <Head>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"/>
@@ -47,7 +27,10 @@ export default function Login() {
                     </button>
                 </form>
         
+=======
+        <div>
+            <LogInSignUp type="Log In"></LogInSignUp>
+>>>>>>> main
         </div>
-
     )
 }
