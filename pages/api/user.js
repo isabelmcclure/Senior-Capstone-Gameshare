@@ -23,7 +23,7 @@ export default async (req, res) => {
     //console.log("newUser")
     let newUser;
     try {
-        newUser = await User.findOneAndUpdate({ email: userMagic.email }, { email: userMagic.email, username: userMagic.email }, { new: true, upsert: true })
+        newUser = await User.findOneAndUpdate({ email: userMagic.email }, { email: userMagic.email}, { new: true, upsert: true })
         /*await axios.post('http://localhost:3000/api/users', {
             email: userMagic.email,
             rating: 5,

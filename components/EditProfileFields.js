@@ -9,13 +9,13 @@ export default function EditProfileFields(props) {
     const handleSubmit = async (event) => {
         event.preventDefault()
 
-        const res = await axios.put(`http://localhost:3000/api/users/${props.userData._id}`, JSON.stringify({
+        const res = await axios.put(`http://localhost:3000/api/users/${props.userData._id}`, {
             username: event.target.username.value,
             location: event.target.location.value
-        }))
+        })
 
         const result = res.data.data
-        console.log(result)
+        console.log(result) 
         router.push('dashboard')
     }
 
