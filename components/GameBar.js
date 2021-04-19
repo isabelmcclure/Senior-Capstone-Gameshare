@@ -70,7 +70,6 @@ const GameBar = (props) => {
                         </div>
                         <div className="pt-5">
                             {/*<button className="font-mono bg-blue-500 p-2 mr-2 rounded text-white">Friends</button>*/}
-                            <button className="font-mono bg-blue-500 p-2 mr-2 rounded text-white">Rent</button>
                             <button className="font-mono bg-blue-500 p-2 mr-2 rounded text-white" role="link" onClick={handleClick}>Rent</button>
                         </div>
                     </div>

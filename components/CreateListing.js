@@ -64,7 +64,11 @@ export default function CreateListing(props) {
     // coordinates calculation
     const opencage = require('opencage-api-client');
 
+<<<<<<< HEAD
     const geo = await opencage.geocode({ key: process.env.OCD_API_KEY, q: location, limit: 1, countrycode: 'us' });
+=======
+    const geo = await opencage.geocode({key: 'ece176d4b3894699b2058fa884f5b210', q: location, limit: 1, countrycode: 'us'});
+>>>>>>> 376871344ca927905aa42e6eeacca210c6e191ce
     //console.log(JSON.stringify(geo));
     if (geo.status.code === 200) {
       if (geo.results.length > 0) {
@@ -83,6 +87,7 @@ export default function CreateListing(props) {
     }
     ///////////////////////////////////////
 
+<<<<<<< HEAD
     const boardGameData = JSON.stringify({
       title: this.state.gameName,
       description: this.state.description,
@@ -98,6 +103,21 @@ export default function CreateListing(props) {
       ownerID: this.state.email,
       available: true
     })
+=======
+    const boardGameData = JSON.stringify({ title: title,
+    description: description,
+    quality: quality,
+    images: imageURLs,
+    price: price,
+    genre: "test genre",
+    numPlayers: 5,
+    duration: startDate,
+    location: location,
+    lat: parseFloat(lat),
+    lng: parseFloat(lng),
+    ownerID: email,
+    available: true})
+>>>>>>> 376871344ca927905aa42e6eeacca210c6e191ce
 
     const gameRes = await fetch('/api/boardgames', {
       method: 'POST',

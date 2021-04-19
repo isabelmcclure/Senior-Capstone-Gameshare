@@ -14,7 +14,7 @@ export default function id({ boardgame }) {
   //console.log(boardgame)
   return (
     <div>
-      <GameBar boardgame={boardgame}></GameBar>
+      <GameBar boardgame={boardgame} rate={boardgame.price} product={boardgame.title} id={boardgame._id} ></GameBar>
       <Images boardgame={boardgame}></Images>
     </div>
 
