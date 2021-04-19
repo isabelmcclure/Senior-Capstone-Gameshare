@@ -64,14 +64,6 @@ const boardGameSchema = new mongoose.Schema({
         required: [true],
         default: true
     },
-    lat: {
-        type: Number,
-        required: [true]
-    },
-    lng: {
-        type: Number,
-        required: [true]
-    },
 },
     {
         timestamps: true,
@@ -79,11 +71,12 @@ const boardGameSchema = new mongoose.Schema({
 
 )
 
+//export default mongoose.model('Boardgame', boardGameSchema)
+
+
 if (!mongoose.models['Boardgame']) {
     module.exports = mongoose.model('Boardgame', boardGameSchema);
 } else {
     module.exports = mongoose.models['Boardgame']
 }
-/*
-export default mongoose.models.Boardgame || mongoose.model('Boardgame', boardGameSchema)
-*/
+
