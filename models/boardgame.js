@@ -51,6 +51,14 @@ const boardGameSchema = mongoose.Schema({
         type: String,
         required: [true]
     },
+    lat: {
+        type: Number,
+        required: [true]
+    },
+    lng: {
+        type: Number,
+        requred: [true]
+    },
     available: {
         type: Boolean,
         required: [true],
