@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
-import DatePicker from 'react-datepicker'
 import dbConnect from '../util/dbConnect'
 import DateRangePicker from '../components/DateRangePicker'
+import QueryBar from "../components/QueryBar"
 
 export default function Home() {
   return (
@@ -13,20 +13,42 @@ export default function Home() {
         <title>GameShare</title>
         <link rel="icon" href="/GS.png" />
       </Head>
-      <body>
-        <div className={styles.landingInputs}>
-          <label>Where?</label>
-          <input type="text" style={{ width: '200px', padding: '10px' }} placeholder="Enter an address, city or zip..." ></input>
+      <header class="bg-blue-600">
+      <section class="flex items-center justify-center" style={{height: '500px' }}>
+            <div class="text-center">
+                <h2 class="mt-6 text-3xl font-bold text-white md:text-5xl">Find board games, <br /> 
+                anywhere.</h2>
+    
+                <div class="flex justify-center mt-8">
+                  <QueryBar></QueryBar>
+                </div>
+            </div>
+        </section>
+      </header>
+      <section class="bg-white">
+        <div class="max-w-5xl px-6 py-16 mx-auto">
+            <div class="items-center md:flex md:space-x-6">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-gray-800">Want to rent out your games instead?</h3>
+                    <p class="max-w-md mt-4 mb-4 text-gray-600">GameShare gives you the opportunity to find board games nearby,
+                    but that's not all you can do. As a board game owner, you can find games to rent AND 
+                    make a profit by renting out your own.</p>
+                    <a class="px-8 py-2 text-lg font-medium text-white transition-colors duration-300 transform bg-blue-600 rounded hover:bg-blue-500"
+                        href="/login">Log In or Sign Up</a>
+
+                </div>
+    
+                <div class="mt-8 md:mt-0 md:w-1/2">
+                    <div class="flex items-center justify-center">
+                        <div class="max-w-md">
+                            <img src="/GameShare.png" style={{height: '300px', width: '300px'}}></img>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-          <DateRangePicker />
-        </div>
-        <div className={styles.search}>
-          <button className="bg-transparent hover:bg-black-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-white-500 hover:border-white-500 rounded">
-            Search
-        </button>
-        </div>
-      </body>
+    </section>
     </div>
+    
   )
 }
