@@ -34,12 +34,7 @@
   box-sizing: border-box;
 }
 .landing {
-  background-color: #38b6ff;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  font-family: "Montserrat", sans-serif;
 }
 .login {
   background-color: #38b6ff;
