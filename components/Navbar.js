@@ -23,12 +23,7 @@ const Navbar = () => {
 
                     {/* secondary nav */}
                     <div className="flex justify-between space-x-1">
-<<<<<<< HEAD
                         <Link href="/login"><a className="px-3 py-5">Login/Sign Up</a></Link>
-=======
-                        <Link href="/login"><a className="px-3 py-5">Login</a></Link>
-                        <Link href="/signUp"><a className="px-3 py-5">Sign Up</a></Link>
->>>>>>> main
                     </div>
 
                 </div>
