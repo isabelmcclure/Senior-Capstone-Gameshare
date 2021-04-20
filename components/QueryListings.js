@@ -6,8 +6,12 @@ const QueryListing = (props) => {
 
     const [title, setTitle] = useState("");
     const [max_price, setMaxPrice] = useState("");
+    const [genre, setGenre] = useState("");
+    const [max_players, setMaxPlayers] = useState("");
+    const [location, setLocation] = useState("");
 
-    let listings = props.listings;
+
+    let listings = props.listings.filter((bg) => bg.available == true);
     const [bg_filtered, setBG] = useState(listings);
 
     const handleGameNameQuery = (e) => {
@@ -18,12 +22,24 @@ const QueryListing = (props) => {
         setMaxPrice(e.target.value);
     }
 
-    const handleSubmit = (e) => {
+    const handleGenreQuery = (e) => {
+        setGenre(e.target.value);
+    }
+
+    const handleMaxPlayersQuery = (e) => {
+        setMaxPlayers(e.target.value);
+    }
+
+    const handleLocationQuery = (e) => {
+        setLocation(e.target.value);
+    }
+
+    const handleSubmit = async (e) => {
         // prevent form from refreshing the page
         e.preventDefault();
 
         // reset bg_filtered state variable
-        listings = props.listings;
+        listings = props.listings.filter((bg) => bg.available == true);
 
         if (title !== "") {
             listings = listings.filter((bg) => bg.title.toLowerCase().includes(title.toLowerCase()));
@@ -31,6 +47,26 @@ const QueryListing = (props) => {
 
         if (max_price != "") {
             listings = listings.filter((bg) => bg.price <= max_price);
+        }
+
+        if (genre != "") {
+            listings = listings.filter((bg) => bg.genre === genre);
+        }
+
+        if (max_players != "") {
+            listings = listings.filter((bg) => bg.numPlayers <= max_players);
+        }
+
+        if (location != "") {
+            const opencage = require('opencage-api-client');
+
+            const geo = await opencage.geocode({ key: 'ece176d4b3894699b2058fa884f5b210', q: location, limit: 1, countrycode: 'us' });
+            var place = geo.results[0];
+            console.log(place.geometry);
+            var lat = place.geometry.lat;
+            var lng = place.geometry.lng;
+            listings = listings.filter( (bg) => (bg.lat <= (lat + (1/4))) && (bg.lat >= (lat - (1/4))) );
+            listings = listings.filter( (bg) => (bg.lng <= (lng + (1/3))) && (bg.lat >= (lng - (1/3))) );
         }
 
         setBG(listings);
@@ -41,7 +77,10 @@ const QueryListing = (props) => {
             {/* <QueryBar> */}
             <QueryBar handleSubmit={handleSubmit}
                 handleGameNameQuery={handleGameNameQuery}
-                handlePriceQuery={handlePriceQuery}>
+                handlePriceQuery={handlePriceQuery}
+                handleGenreQuery={handleGenreQuery}
+                handleMaxPlayersQuery={handleMaxPlayersQuery}
+                handleLocationQuery={handleLocationQuery}>
             </QueryBar>
 
             <h1 className="mt-7 w-5/6 mx-auto text-3xl">Current Listings</h1>
