@@ -12,7 +12,7 @@ const UserBar = (props) => {
 
                     {/* profile picture and use message */}
                     {/* <div className="border-blue-400 border-4 rounded-full"> */}
-                    <img className="border-blue-400 border-4 rounded-full bg-blue-300 " src="https://randomuser.me/api/portraits/lego/2.jpg" alt="profile_picture" />
+                    <img className="border-blue-400 border-4 rounded-full bg-blue-300 " src={props.userData.img} alt="profile_picture" />
                     {/* </div> */}
 
                     <div className="flex-col justify-evenly w-2/4 h-auto mt-5">
@@ -36,11 +36,7 @@ const UserBar = (props) => {
                     </div>
                     <div className="pt-5">
                         {/*<button className="font-mono bg-blue-500 p-2 mr-2 rounded text-white">Friends</button>*/}
-                        <button className="bg-blue-500 p-2 mr-2 rounded text-white">My Transactions</button>
-                        <Link href="/createListing"><button className="bg-blue-500 p-2 mr-2 rounded text-white">New Listing</button></Link>
                         <Link href="/editProfile"><button className="bg-blue-500 p-2 mr-2 rounded text-white">Edit Profile</button></Link>
-
-
                     </div>
                 </div>
 

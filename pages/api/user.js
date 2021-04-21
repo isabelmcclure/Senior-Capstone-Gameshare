@@ -31,8 +31,8 @@ export default async (req, res) => {
     } catch (error) {
         console.log(error);
         try {
-            console.log(userMagic.email)
-            newUser = await User.create({ email: userMagic.email, username: userMagic.email })
+            const emailSplit = userMagic.email.split("@")
+            newUser = await User.create({ email: userMagic.email, username: emailSplit[0] })
         } catch (error) {
             console.log(error);
         }
