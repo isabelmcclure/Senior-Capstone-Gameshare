@@ -1,6 +1,8 @@
 import QueryBar from "../components/QueryBar";
 import QueryListing from "../components/QueryListings";
 import axios from 'axios'
+import dbConnect from '../util/dbConnect'
+import Boardgame from '../models/boardgame'
 
 function Listings({ boardgames }) {
     return (
@@ -12,10 +14,14 @@ function Listings({ boardgames }) {
 
 
 export async function getStaticProps(context) {
-    const res = await axios.get('/api/boardgames');
+    dbConnect();
+    const dbres = await Boardgame.find()
+    //const res = await axios.get('/api/boardgames')
+    //console.log(JSON.parse(JSON.stringify(dbres)))
+    //console.log(dbres)
 
-    const boardgames = res.data.data;
-    // console.log(boardgames)
+
+    const boardgames = JSON.parse(JSON.stringify(dbres));
 
     return { props: { boardgames } }
 }

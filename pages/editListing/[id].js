@@ -136,9 +136,12 @@ export default function id({ boardgame }) {
 }
 
 export async function getStaticProps(context) {
-  const res = await axios.get(`/api/boardgames/${context.params.id}`);
+  dbConnect();
+  const dbres = await Boardgame.findById(context.params.id);
+  //const res = await axios.get(`/api/boardgames/${context.params.id}`);
 
-  const boardgame = res.data.data;
+  //console.log(dbres)
+  const boardgame = JSON.parse(JSON.stringify(dbres));
 
   //console.log(boardgame);
   return { props: { boardgame } };
@@ -147,10 +150,11 @@ export async function getStaticProps(context) {
 
 // This function gets called at build time
 export async function getStaticPaths() {
+  dbConnect();
   // Call an external API endpoint to get posts
-
-  const res = await axios.get(`/api/boardgames`)
-  const boardgame = res.data.data;
+  const dbres = await Boardgame.find();
+  //const res = await axios.get(`/api/boardgames`)
+  const boardgame = JSON.parse(JSON.stringify(dbres));
 
   //console.log(boardgame);
 
