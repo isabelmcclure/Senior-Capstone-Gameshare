@@ -48,7 +48,7 @@ export default async (req, res) => {
         case 'checkout.session.completed':
             // Fulfill the purchase...
             const session = event.data.object;
-            dbConnect();
+            await dbConnect();
             const productID = session.cancel_url.split('/')
             console.log(productID[4]);
             let userBoardgames;
