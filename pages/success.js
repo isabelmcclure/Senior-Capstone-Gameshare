@@ -1,12 +1,13 @@
+import React, { Component, useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
-import dbConnect from '../util/dbConnect'
-import Boardgame from '../models/boardgame'
+import axios from 'axios'
 
+export default function Success({ props }) {
+    const [customerName, setCustomerName] = useState("");
+    const [sellerEmail, setSellerEmail] = useState("");
 
-export default function Success() {
     const router = useRouter();
-
     const { data, error } = useSWR(
         router.query.session_id ?
             `/api/checkout/${router.query.session_id}`
@@ -14,26 +15,40 @@ export default function Success() {
         (url) => fetch(url).then(res => res.json())
     )
     const { session_id } = router.query
-    //console.log(data.session.payment_intent.charges.data.name)
 
-    //console.log(JSON.stringify(data[1], null, 2))
+    const getInfo = async () => {
+
+        const productID = await data.session.cancel_url.split('/')
+        const id = productID[4]
+        const res = await axios.get(`/api/boardgames/${id}`)
+
+        const customerNameData = await data.session.payment_intent.charges.data[0].billing_details.name;
+        setCustomerName(customerNameData);
+        setSellerEmail(res.data.data.ownerID)
+    }
+
+    useEffect(() => {
+        if (customerName == "" || sellerEmail == "") {
+            getInfo()
+        }
+    })
+
+
 
     return (
         <div >
             <head><title>Thanks for your order!</title></head>
             <body>
-                <div className="mx-auto p-5">
-                    <h1 className="text-3xl font-bold">Thanks for your order!</h1>
-                    <p>{session_id}</p>
+                <div className="flex flex-col mx-auto p-12 w-1/2">
+                    <h1 className="text-3xl font-bold">Thanks for your order details {customerName}!</h1>
+                    <br />
                     <p>
                         We appreciate your business!
-                        If you have any questions, please email
-      <a href="mailto:orders@example.com">orders@example.com</a>.
-    </p>
+                        If you have any questions, please email <a>{sellerEmail}</a>.
+                    </p>
                 </div>
-
             </body>
-            <pre>{data ? JSON.stringify(data, null, 2) : 'Loading...'}</pre>
         </div>
     )
 }
+

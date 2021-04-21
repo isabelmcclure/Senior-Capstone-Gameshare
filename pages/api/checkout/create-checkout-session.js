@@ -7,7 +7,6 @@ export default async (req, res) => {
     const stripe = require('stripe')('sk_test_51IdoMPBL7EVXf27yRov1hIaRrRPbaUi0lS7YjYduTZLWUpw9u3rTFut2GB7Yu2QPHcRHu0t6RtYdKS691QcFpLVt00Fs1ArB3T')
 
 
-    //console.log(req.body)
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items: [
@@ -23,7 +22,7 @@ export default async (req, res) => {
             },
         ],
         mode: 'payment',
-        success_url: `${req.header.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `${req.headers.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: req.body.path,
     });
 

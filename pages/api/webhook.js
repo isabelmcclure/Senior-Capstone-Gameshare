@@ -50,7 +50,7 @@ export default async (req, res) => {
             const session = event.data.object;
             await dbConnect();
             const productID = session.cancel_url.split('/')
-            console.log(productID[4]);
+            //console.log(productID[4]);
             let userBoardgames;
             userBoardgames = await Boardgame.findOneAndUpdate({ _id: productID[4] }, { available: "false" })
             console.log("Fulfilling order", session);
