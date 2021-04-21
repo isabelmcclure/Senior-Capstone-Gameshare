@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import axios from 'axios'
+import styles from '../styles/Home.module.css'
 
 export default function Success({ props }) {
     const [customerName, setCustomerName] = useState("");
@@ -36,7 +37,8 @@ export default function Success({ props }) {
 
 
     return (
-        <div >
+        <div className={styles.landing}>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
             <head><title>Thanks for your order!</title></head>
             <body>
                 <div className="flex flex-col mx-auto p-12 w-1/2">

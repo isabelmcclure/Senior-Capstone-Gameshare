@@ -21,6 +21,10 @@ const userSchema = mongoose.Schema({
         type: String,
         default: "N/A",
     },
+    img: {
+        type: String,
+        default: "https://randomuser.me/api/portraits/lego/2.jpg"
+    },
     rating: {
         type: Number,
         min: 1,

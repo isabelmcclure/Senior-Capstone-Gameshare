@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 //import boardgameImage from '.public/boardgame.jpeg'
-import Listing from '../../components/Listing.js'
-import RentingOption from '../../components/RentingOption.js'
-import 'react-datepicker/dist/react-datepicker.css'
-import style from '../../styles/SpecificListing.module.css'
 import axios from 'axios'
 import GameBar from '../../components/GameBar.js'
 import Images from '../../components/Images.js'

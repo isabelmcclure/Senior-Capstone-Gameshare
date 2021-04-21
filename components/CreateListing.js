@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import redirect from 'nextjs-redirect'
 import { route } from 'next/dist/next-server/server/router';
 import { isAssetError } from 'next/dist/client/route-loader';
+import styles from '../styles/Home.module.css'
 //import boardgameImage from '.public/boardgame.jpeg'
 
 export default function CreateListing(props) {
@@ -15,11 +16,9 @@ export default function CreateListing(props) {
   const [imageURLs, setImageURLs] = useState([]);
   const [imageFiles, setImageFiles] = useState([]);
   const [price, setPrice] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [genre, setGenre] = useState("");
+  const [numPlayers, setNumPlayers] = useState("");
   const [location, setLocation] = useState("");
-  const [lat, setLat] = useState("");
-  const [lng, setLng] = useState("");
   const [email, setEmail] = useState(props.userData.email);
 
   const handleTitleChange = (event) => {
@@ -44,10 +43,18 @@ export default function CreateListing(props) {
     });
 
     const file = await res.json();
+    console.log("cloudinary api")
+    console.log(file)
     setImageURLs(imageURLs => [...imageURLs, file.secure_url])
   }
   const handlePriceChange = (event) => {
     setPrice(event.target.value)
+  }
+  const handleGenreChange = (event) => {
+    setGenre(event.target.value)
+  }
+  const handleNumPlayersChange = (event) => {
+    setNumPlayers(event.target.value)
   }
   const handleStartDateChange = (event) => {
     setStartDate(event.target.value)
@@ -70,8 +77,6 @@ export default function CreateListing(props) {
       if (geo.results.length > 0) {
         var place = geo.results[0];
         console.log(place.geometry);
-        setLat(place.geometry.lat);
-        setLng(place.geometry.lng);
       }
     } else if (geo.status.code === 402) {
       console.log('hit free trial daily limit');
@@ -89,13 +94,12 @@ export default function CreateListing(props) {
       quality: quality,
       images: imageURLs,
       price: price,
-      genre: "test genre",
-      numPlayers: 5,
-      duration: startDate,
-      location: location,
-      lat: parseFloat(lat),
-      lng: parseFloat(lng),
+      genre: genre,
+      numPlayers: numPlayers,
       ownerID: email,
+      location: location,
+      lat: place.geometry.lat,
+      lng: place.geometry.lng,
       available: true
     })
 
@@ -108,6 +112,7 @@ export default function CreateListing(props) {
       body: boardGameData
     });
 
+    console.log("boargame api")
     console.log(gameRes.json());
     router.push("/dashboard")
 
@@ -116,7 +121,8 @@ export default function CreateListing(props) {
 
   return (
 
-    <div>
+    <div className={styles.landing}>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
       <h1 className="px-5 py-5 mb-2 uppercase font-bold text-3xl text-grey-darkest">Create a Listing</h1>
       <div className="w-1/2 px-12">
         <form className="mb-6" onSubmit={handleSubmit}>
@@ -130,7 +136,14 @@ export default function CreateListing(props) {
           </div>
           <div className="flex flex-col mb-4">
             <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="quality">Quality</label>
-            <input className="border py-2 px-3 text-grey-darkest" type="text" name="quality" id="quality" onChange={handleQualityChange}></input>
+            {/*<input className="border py-2 px-3 text-grey-darkest" type="text" name="quality" id="quality" onChange={handleQualityChange}></input>*/}
+            <select className="border py-2 px-3 text-grey-darkest" id="quality" name="quality" onChange={handleQualityChange}>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
           </div>
           <div className="flex flex-col mb-4">
             <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="pictures">Pictures (Add up to 6)</label>
@@ -148,12 +161,12 @@ export default function CreateListing(props) {
             <input className="border py-2 px-3 text-grey-darkest" type="text" name="price" id="price" onChange={handlePriceChange}></input>
           </div>
           <div className="flex flex-col mb-4">
-            <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="start_date">Start Date</label>
-            <input className="border py-2 px-3 text-grey-darkest" type="date" name="start_date" id="start_date" onChange={handleStartDateChange}></input>
+            <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="genre">Genre</label>
+            <input className="border py-2 px-3 text-grey-darkest" type="text" name="genre" id="genre" onChange={handleGenreChange}></input>
           </div>
           <div className="flex flex-col mb-4">
-            <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="end_date">End Date</label>
-            <input className="border py-2 px-3 text-grey-darkest" type="date" name="end_date" id="end_date" onChange={handleEndDateChange}></input>
+            <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="numPlayers">Number of Players</label>
+            <input className="border py-2 px-3 text-grey-darkest" type="text" name="numPlayers" id="numPlayers" onChange={handleNumPlayersChange}></input>
           </div>
           <div className="flex flex-col mb-4">
             <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="location">Location</label>

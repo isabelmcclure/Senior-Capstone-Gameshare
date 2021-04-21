@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import Link from 'next/link'
 import QueryBar from "../components/QueryBar";
+import styles from '../styles/Home.module.css'
 
 const QueryListing = (props) => {
 
@@ -73,7 +74,8 @@ const QueryListing = (props) => {
     }
 
     return (
-        <div>
+        <div className={styles.landing}>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
             {/* <QueryBar> */}
             <QueryBar handleSubmit={handleSubmit}
                 handleGameNameQuery={handleGameNameQuery}
@@ -88,17 +90,21 @@ const QueryListing = (props) => {
                 <tbody>
                     <tr className="text-left border-b-2 border-gray-300">
                         <th className="px-4 py-3">Game</th>
+                        <th className="px-4 py-3">Genre</th>
+                        <th className="px-4 py-3">Players</th>
                         <th className="px-4 py-3">Price</th>
                         <th className="px-4 py-3">Date Posted</th>
-                        <th className="px-4 py-3"> </th>
+                        <th className="px-4 py-3"></th>
                     </tr>
 
                     {bg_filtered.map((boardgame) => {
                         return (
                             <tr className="bg-gray-100 border-b border-gray-200" key={boardgame._id}>
                                 <td className="px-4 py-3">{boardgame.title}</td>
+                                <td className="px-4 py-3">{boardgame.genre}</td>
+                                <td className="px-4 py-3">{boardgame.numPlayers}</td>
                                 <td className="px-4 py-3">${boardgame.price}</td>
-                                <td className="px-4 py-3">{boardgame.postedAt}</td>
+                                <td className="px-4 py-3">{boardgame.postedAt.split('T')[0]}</td>
                                 <td className="px-4 py-3">
                                     {/* <Link href={`/listings/${boardgame._id}`}><button className="bg-blue-500 p-2 rounded text-green-200">View</button></Link> */}
                                     <Link href={`/listings/${boardgame._id}`}><button className="bg-blue-500 p-2 rounded text-green-200 px-2">View</button></Link>
