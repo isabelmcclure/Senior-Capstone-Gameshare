@@ -33,11 +33,7 @@ const UserBar = (props) => {
                     </div>
                     <div className="pt-5">
                         {/*<button className="font-mono bg-blue-500 p-2 mr-2 rounded text-white">Friends</button>*/}
-                        <button className="font-mono bg-blue-500 p-2 mr-2 rounded text-white">My Transactions</button>
-                        <Link href="/createListing"><button className="font-mono bg-blue-500 p-2 mr-2 rounded text-white">New Listing</button></Link>
                         <Link href="/editProfile"><button className="font-mono bg-blue-500 p-2 mr-2 rounded text-white">Edit Profile</button></Link>
-
-
                     </div>
                 </div>
 
