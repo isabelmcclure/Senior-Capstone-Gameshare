@@ -70,8 +70,8 @@ export default function CreateListing(props) {
       if (geo.results.length > 0) {
         var place = geo.results[0];
         console.log(place.geometry);
-        this.setState({ lat: place.geometry.lat });
-        this.setState({ lng: place.geometry.lng });
+        setLat(place.geometry.lat);
+        setLng(place.geometry.lng);
       }
     } else if (geo.status.code === 402) {
       console.log('hit free trial daily limit');
