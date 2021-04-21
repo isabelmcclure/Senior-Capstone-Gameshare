@@ -9,7 +9,7 @@ const UserBar = (props) => {
 
                     {/* profile picture and use message */}
                     {/* <div className="border-blue-400 border-4 rounded-full"> */}
-                    <img className="border-blue-400 border-4 rounded-full bg-blue-300 " src="https://randomuser.me/api/portraits/lego/2.jpg" alt="profile_picture" />
+                    <img className="border-blue-400 border-4 rounded-full bg-blue-300 " src={props.userData.img} alt="profile_picture" />
                     {/* </div> */}
 
                     <div className="flex-col justify-evenly w-2/4 h-auto mt-5">
