@@ -17,7 +17,7 @@ export default function EditProfileFields(props) {
         })
 
         const result = res.data.data
-        console.log(result)
+        console.log(result) 
         router.push('dashboard')
     }
 
