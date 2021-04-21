@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import QueryBar from "../components/QueryBar";
 import QueryListing from "../components/QueryListings";
 import axios from 'axios'
+import Head from 'next/head'
 //import dbConnect from "../util/dbConnect";
 
 //var Boardgame = require("../models/boardgame")
@@ -49,6 +50,10 @@ import axios from 'axios'
 function Listings({ boardgames }) {
     return (
         <div>
+            <Head>
+                <title>GameShare</title>
+                <link rel="icon" href="/GS.png" />
+            </Head>
             <QueryListing listings={boardgames}></QueryListing>
         </div>
     );

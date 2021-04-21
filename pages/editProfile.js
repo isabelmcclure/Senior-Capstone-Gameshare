@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Head from 'next/head'
 
 export default function EditProfile(props) {
 
@@ -15,6 +16,10 @@ export default function EditProfile(props) {
 
     return (
         <div className="container w-1/2 mx-auto pt-4">
+            <Head>
+                <title>GameShare</title>
+                <link rel="icon" href="/GS.png" />
+            </Head>
             <h1 className="uppercase text-3xl font-bold">Edit Profile</h1>
             <form className="grid justify-center" onSubmit={profileUpdate}>
                 <div>
