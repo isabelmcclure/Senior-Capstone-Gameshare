@@ -1,6 +1,8 @@
 import React, { Component, useState } from 'react';
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import dbConnect from '../../util/dbConnect'
+import Boardgame from '../../models/boardgame'
 export default function id({ boardgame }) {
 
   const [title, setTitle] = useState(boardgame.title);
