@@ -20,7 +20,7 @@ export default function id({ boardgame }) {
 
 
 export async function getStaticProps(context) {
-  const res = await axios.get(`http://localhost:3000/api/boardgames/${context.params.id}`);
+  const res = await axios.get(`/api/boardgames/${context.params.id}`);
 
   const boardgame = res.data.data;
 
@@ -33,7 +33,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
 
-  const res = await axios.get(`http://localhost:3000/api/boardgames`)
+  const res = await axios.get(`/api/boardgames`)
   const boardgame = res.data.data;
 
   //console.log(boardgame);

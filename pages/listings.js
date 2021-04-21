@@ -12,7 +12,7 @@ function Listings({ boardgames }) {
 
 
 export async function getStaticProps(context) {
-    const res = await axios.get('http://localhost:3000/api/boardgames');
+    const res = await axios.get('/api/boardgames');
 
     const boardgames = res.data.data;
     // console.log(boardgames)
