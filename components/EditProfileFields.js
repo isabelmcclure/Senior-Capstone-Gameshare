@@ -24,19 +24,21 @@ export default function EditProfileFields(props) {
 
 
     return (
-        <div className="container w-1/2 mx-auto pt-4">
-            <h1 className="uppercase text-3xl font-bold">Edit Profile</h1>
-            <form className="grid justify-center" onSubmit={handleSubmit}>
-                <div>
-                    <label className="">Username</label> <br />
-                    <input type="text" id="username" name="username" className="border mb-4"></input>
+        <div>
+        <h1 className="px-5 py-5 mb-2 uppercase font-bold text-3xl text-grey-darkest">Edit Profile</h1>
+        <div className="w-1/2 px-12">
+            <form className="mb-6" onSubmit={handleSubmit}>
+                <div className="flex flex-col mb-4">
+                    <label className="mb-2 uppercase font-bold text-lg text-grey-darkest">Username</label>
+                    <input className="border py-2 px-3 text-grey-darkest" type="text" id="username" name="username"></input>
                 </div>
-                <div>
-                    <label className="">Location</label> <br />
-                    <input type="text" id="location" name="location" className="border mb-4"></input>
+                <div className="flex flex-col mb-4 ">
+                    <label className="mb-2 uppercase font-bold text-lg text-grey-darkest">Location</label>
+                    <input className="border py-2 px-3 text-grey-darkest" type="text" id="location" name="location"></input>
                 </div>
-                <input type="submit" value="Submit" />
+                <button className="block bg-green-500 hover:bg-green-600 text-white uppercase text-lg mx-auto p-4 rounded" type="submit">Submit</button>
             </form>
+        </div>
         </div>
     )
 }
