@@ -11,7 +11,7 @@ export default function EditProfileFields(props) {
 
 
 
-        const res = await axios.put(`http://localhost:3000/api/users/${props.userData._id}`, {
+        const res = await axios.put(`/api/users/${props.userData._id}`, {
             username: event.target.username.value,
             location: event.target.location.value
         })
