@@ -10,7 +10,7 @@ const MyListings = (props) => {
     const deleteListing = async event => {
         event.preventDefault();
 
-        const res = await axios.delete(`http://localhost:3000/api/boardgames/${event.target.id.value}`)
+        const res = await axios.delete(`/api/boardgames/${event.target.id.value}`)
         console.log(res);
         window.location.reload(false);
     }
