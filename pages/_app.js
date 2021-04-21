@@ -1,10 +1,13 @@
 import Layout from '../components/Layout'
 import '../styles/globals.css'
+import axios from 'axios'
+
+axios.defaults.baseURL = 'http://localhost:3000';
 
 function MyApp({ Component, pageProps }) {
   return (
     <Layout>
-        <Component {...pageProps} />
+      <Component {...pageProps} />
     </Layout>
   )
 }

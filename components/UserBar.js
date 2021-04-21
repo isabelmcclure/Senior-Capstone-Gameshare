@@ -14,7 +14,7 @@ const UserBar = (props) => {
 
                     <div className="flex-col justify-evenly w-2/4 h-auto mt-5">
                         <h1 className="font-mono font-extrabold text-blue-700 text-1xl">Welcome Back,</h1>
-                        <h1 className="font-mono font-extrabold text-blue-700 text-3xl mt-1">{props.userData.email}</h1>
+                        <h1 className="font-mono font-extrabold text-blue-700 text-3xl mt-1">{props.userData.username}</h1>
                     </div>
                 </div>
 
