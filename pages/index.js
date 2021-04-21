@@ -26,7 +26,7 @@ export default function Home() {
                             <Link href="/listings">
                                 <button className="bg-indigo-400 p-5 rounded-full text-white font-bold border-purple-600 shadow-xl transition duration-700 ease-in-out tracking-wide
                                 transform hover:-translate-y-1 hover:scale-110 hover:bg-white hover:text-blue-600">
-                                    Click here to get started
+                                    Start looking now
                                 </button>
 
                             </Link>

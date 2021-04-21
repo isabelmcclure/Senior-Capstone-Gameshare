@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import Link from 'next/link'
 import QueryBar from "../components/QueryBar";
+import styles from '../styles/Home.module.css'
 
 const QueryListing = (props) => {
 
@@ -73,7 +74,8 @@ const QueryListing = (props) => {
     }
 
     return (
-        <div>
+        <div className={styles.landing}>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
             {/* <QueryBar> */}
             <QueryBar handleSubmit={handleSubmit}
                 handleGameNameQuery={handleGameNameQuery}

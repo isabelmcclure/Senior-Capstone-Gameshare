@@ -4,6 +4,7 @@ import MyListings from "../components/MyListings";
 import UserBar from "../components/UserBar";
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import styles from '../styles/Home.module.css'
 
 export default function Dashboard() {
     const { data, loading, error } = useAuth();
@@ -19,8 +20,9 @@ export default function Dashboard() {
         //     <h1>Dashboard</h1>
         //     {loading ? "Loading..." : user.email}
         // </>
-        <div>
+        <div className={styles.landing}>
             <Head>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
                 <title>GameShare</title>
                 <link rel="icon" href="/GS.png" />
             </Head>

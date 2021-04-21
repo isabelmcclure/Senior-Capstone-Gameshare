@@ -1,7 +1,10 @@
 import Link from 'next/link'
+import styles from '../styles/Home.module.css'
 
 const Navbar = () => {
     return (
+        <div className={styles.landing}>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
         <nav className="bg-gray-100">
             <div className="max-w-6xl mx-auto">
                 <div className="flex justify-between">
@@ -29,6 +32,7 @@ const Navbar = () => {
                 </div>
             </div>
         </nav>
+        </div>
     );
 }
 
