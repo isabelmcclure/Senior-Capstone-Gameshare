@@ -62,6 +62,7 @@ export default function RentingOption(props) {
   return (
 
     <div className={style.columnContainer}>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
       <h1 className={style.title}>Want to rent this game?</h1>
       <div className={style.rowContainer}>
         Select rent date: <DatePicker className={style.card} selected={startDate} onChange={startDateSelected} />

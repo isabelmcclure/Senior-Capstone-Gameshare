@@ -8,6 +8,7 @@ export default function Listing(props) {
   return (
 
     <div className={style.container}>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
       <main>
           <h1 className={style.title}>{props.name}</h1>
           <Images images={props.images}></Images>

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import styles from '../styles/Home.module.css'
 
 export default function EditProfileFields(props) {
     const router = useRouter();
@@ -24,7 +25,8 @@ export default function EditProfileFields(props) {
 
 
     return (
-        <div>
+        <div className={styles.landing}>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
         <h1 className="px-5 py-5 mb-2 uppercase font-bold text-3xl text-grey-darkest">Edit Profile</h1>
         <div className="w-1/2 px-12">
             <form className="mb-6" onSubmit={handleSubmit}>

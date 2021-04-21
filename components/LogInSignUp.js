@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { Magic } from 'magic-sdk'
 import { useState } from 'react'
+import styles from '../styles/Home.module.css'
 
 export default function Login(props) {
   const router = useRouter()
@@ -36,7 +37,8 @@ export default function Login(props) {
   }
 
   return (
-    <div>
+    <div className={styles.landing}>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
       <h1 className="px-5 py-5 mb-2 uppercase font-bold text-3xl text-grey-darkest">{props.type}</h1>
       <div className="w-1/2 px-12">
         <form className="mb-6" onSubmit={handleSubmit}>

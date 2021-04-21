@@ -1,4 +1,5 @@
 .container {
+  font-family: "Montserrat", sans-serif;
   overflow: hidden;
   min-height: 100vh;
   padding: 1.0rem 1.0rem;
@@ -46,15 +47,18 @@
 }
 
 .title {
+  font-family: "Montserrat", sans-serif;
   font-size: 2rem;
 }
 
 .title,
 .description {
+  font-family: "Montserrat", sans-serif;
   text-align: left;
 }
 
 .description {
+  font-family: "Montserrat", sans-serif;
   line-height: 1.5;
   font-size: 1.5rem;
 }

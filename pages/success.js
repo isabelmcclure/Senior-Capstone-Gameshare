@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import dbConnect from '../util/dbConnect'
 import Boardgame from '../models/boardgame'
+import styles from '../styles/Home.module.css'
 
 
 export default function Success() {
@@ -19,7 +20,8 @@ export default function Success() {
     //console.log(JSON.stringify(data[1], null, 2))
 
     return (
-        <div >
+        <div className={styles.landing}>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
             <head><title>Thanks for your order!</title></head>
             <body>
                 <div className="mx-auto p-5">

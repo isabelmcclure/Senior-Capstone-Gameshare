@@ -7,6 +7,7 @@ function Listings({ boardgames }) {
     return (
         <div>
             <Head>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
                 <title>GameShare</title>
                 <link rel="icon" href="/GS.png" />
             </Head>
