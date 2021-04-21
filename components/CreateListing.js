@@ -18,8 +18,6 @@ export default function CreateListing(props) {
   const [genre, setGenre] = useState("");
   const [numPlayers, setNumPlayers] = useState("");
   const [location, setLocation] = useState("");
-  const [lat, setLat] = useState("");
-  const [lng, setLng] = useState("");
   const [email, setEmail] = useState(props.userData.email);
 
   const handleTitleChange = (event) => {
@@ -44,6 +42,8 @@ export default function CreateListing(props) {
     });
 
     const file = await res.json();
+    console.log("cloudinary api")
+    console.log(file)
     setImageURLs(imageURLs => [...imageURLs, file.secure_url])
   }
   const handlePriceChange = (event) => {
@@ -76,8 +76,6 @@ export default function CreateListing(props) {
       if (geo.results.length > 0) {
         var place = geo.results[0];
         console.log(place.geometry);
-        setLat(place.geometry.lat);
-        setLng(place.geometry.lng);
       }
     } else if (geo.status.code === 402) {
       console.log('hit free trial daily limit');
@@ -99,8 +97,8 @@ export default function CreateListing(props) {
       numPlayers: numPlayers,
       ownerID: email,
       location: location,
-      lat: parseFloat(lat),
-      lng: parseFloat(lng),
+      lat: place.geometry.lat,
+      lng: place.geometry.lng,
       available: true
     })
 
@@ -113,6 +111,7 @@ export default function CreateListing(props) {
       body: boardGameData
     });
 
+    console.log("boargame api")
     console.log(gameRes.json());
     router.push("/dashboard")
 
