@@ -6,7 +6,7 @@ export default async (req, res) => {
 
     const stripe = require('stripe')('sk_test_51IdoMPBL7EVXf27yRov1hIaRrRPbaUi0lS7YjYduTZLWUpw9u3rTFut2GB7Yu2QPHcRHu0t6RtYdKS691QcFpLVt00Fs1ArB3T')
 
-
+    console.log(req.headers)
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items: [
