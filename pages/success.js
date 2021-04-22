@@ -29,7 +29,7 @@ export default function Success({ props }) {
     }
 
     useEffect(() => {
-        if (customerName == "" || sellerEmail == "") {
+        while (customerName == "" && sellerEmail == "") {
             getInfo()
         }
     })
