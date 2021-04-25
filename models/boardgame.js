@@ -69,14 +69,22 @@ const boardGameSchema = new mongoose.Schema({
         timestamps: true,
     }
 
-)
+);
 
 //export default mongoose.model('Boardgame', boardGameSchema)
 
 
-if (!mongoose.models['Boardgame']) {
+/*if (!mongoose.models['Boardgame']) {
     module.exports = mongoose.model('Boardgame', boardGameSchema);
 } else {
     module.exports = mongoose.models['Boardgame']
+}*/
+
+let Boardgame 
+try{
+    Boardgame = mongoose.model("Boardgame");
+} catch (error) {
+    Boardgame = mongoose.model("Boardgame", boardGameSchema);
 }
+module.exports = Boardgame;
 

@@ -28,6 +28,8 @@ export async function getStaticProps(context) {
 
 
     const boardgames = JSON.parse(JSON.stringify(dbres));
+    //onst boardgames = res.data.data;
+
 
     return { props: { boardgames } }
 }

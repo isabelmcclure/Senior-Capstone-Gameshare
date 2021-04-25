@@ -1,10 +1,14 @@
 import React, { Component, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import dbConnect from '../util/dbConnect'
+import Boardgame from '../models/boardgame'
 import redirect from 'nextjs-redirect'
 import { route } from 'next/dist/next-server/server/router';
 import { isAssetError } from 'next/dist/client/route-loader';
 import styles from '../styles/Home.module.css'
 //import boardgameImage from '.public/boardgame.jpeg'
+
+//dbConnect();
 
 export default function CreateListing(props) {
 
@@ -106,11 +110,18 @@ export default function CreateListing(props) {
     const gameRes = await fetch('/api/boardgames', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json, text/plain, */*',
+        'Accept': 'application/json, text/plain, */',
         'Content-Type': 'application/json'
       },
       body: boardGameData
     });
+
+    /*try{
+      const gameRes = await Boardgame.create(boardGameData);
+    }
+   catch (error) {
+     console.log(error);
+   }*/
 
     console.log("boargame api")
     console.log(gameRes.json());

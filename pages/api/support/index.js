@@ -1,7 +1,7 @@
 import dbConnect from '../../../util/dbConnect'
 import Support from '../../../models/support'
 
-//dbConnect();
+dbConnect();
 
 export default async (req, res) => {
 
