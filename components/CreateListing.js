@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import dbConnect from '../util/dbConnect'
 import redirect from 'nextjs-redirect'
 import { route } from 'next/dist/next-server/server/router';
 import { isAssetError } from 'next/dist/client/route-loader';
@@ -7,6 +8,8 @@ import styles from '../styles/Home.module.css'
 //import boardgameImage from '.public/boardgame.jpeg'
 
 export default function CreateListing(props) {
+
+  dbConnect();
 
   const router = useRouter();
 
