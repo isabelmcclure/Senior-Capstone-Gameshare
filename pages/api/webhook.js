@@ -14,7 +14,7 @@ export default async (req, res) => {
     const payload = await getRawBody(req);
     //console.log(req.body)
     const sig = req.headers['stripe-signature'];
-    const endpointSecret = "whsec_2IMKCINkwtPFRB7wcV9aoeJPfp9xxlgB";
+    const endpointSecret = "whsec_ygB6pjDcxFCiYAnFEAm00JashvznJcHo";
 
     const payloadjson = JSON.stringify(payload, null, 2)
     //console.log(payloadjson)

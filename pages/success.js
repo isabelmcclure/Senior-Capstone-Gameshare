@@ -29,7 +29,7 @@ export default function Success({ props }) {
     }
 
     useEffect(() => {
-        if (customerName == "" || sellerEmail == "") {
+        while (customerName == "" && sellerEmail == "") {
             getInfo()
         }
     })
@@ -42,11 +42,11 @@ export default function Success({ props }) {
             <head><title>Thanks for your order!</title></head>
             <body>
                 <div className="flex flex-col mx-auto p-12 w-1/2">
-                    <h1 className="text-3xl font-bold">Thanks for your order details {customerName}!</h1>
+                    <h1 className="text-3xl font-bold">Thanks for your order details {customerName ? JSON.stringify(customerName, null, 2) : 'Loading...'}!</h1>
                     <br />
                     <p>
                         We appreciate your business!
-                        If you have any questions, please email <a>{sellerEmail}</a>.
+                        If you have any questions, please email <a>{sellerEmail ? JSON.stringify(sellerEmail, null, 2) : 'Loading...'}</a>.
                     </p>
                 </div>
             </body>
