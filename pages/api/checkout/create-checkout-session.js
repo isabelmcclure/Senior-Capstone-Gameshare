@@ -6,7 +6,7 @@ export default async (req, res) => {
 
     const stripe = require('stripe')('sk_test_51IdoMPBL7EVXf27yRov1hIaRrRPbaUi0lS7YjYduTZLWUpw9u3rTFut2GB7Yu2QPHcRHu0t6RtYdKS691QcFpLVt00Fs1ArB3T')
 
-    console.log(req.headers)
+    //console.log(req.headers)
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items: [
@@ -22,12 +22,12 @@ export default async (req, res) => {
             },
         ],
         mode: 'payment',
-        success_url: `http://gameshare.vercel.app/success?session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: req.body.path,
+        metadata: { productID: req.body.productID, },
     });
 
-    //console.log(session)
-    res.json({ id: session.id, productID: req.body.id });
+    res.json({ id: session.id, productID: req.body.productID });
 
 
 

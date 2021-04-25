@@ -15,24 +15,29 @@ export default function Success({ props }) {
             : null,
         (url) => fetch(url).then(res => res.json())
     )
+    //console.log(data)
     const { session_id } = router.query
 
     const getInfo = async () => {
+        try {
+            const productID = await data.session.metadata.productID
+            const res = await axios.get(`/api/boardgames/${productID}`)
 
-        const productID = await data.session.cancel_url.split('/')
-        const id = productID[4]
-        const res = await axios.get(`/api/boardgames/${id}`)
+            const customerNameData = await data.session.payment_intent.charges.data[0].billing_details.name;
+            setCustomerName(customerNameData);
+            setSellerEmail(res.data.data.ownerID)
+        } catch (error) {
+        }
 
-        const customerNameData = await data.session.payment_intent.charges.data[0].billing_details.name;
-        setCustomerName(customerNameData);
-        setSellerEmail(res.data.data.ownerID)
     }
 
-    useEffect(() => {
-        while (customerName == "" && sellerEmail == "") {
-            getInfo()
-        }
-    })
+    try {
+        getInfo()
+    } catch (error) {
+        console.log(error)
+    }
+
+
 
 
 
@@ -45,8 +50,8 @@ export default function Success({ props }) {
                     <h1 className="text-3xl font-bold">Thanks for your order details {customerName ? JSON.stringify(customerName, null, 2) : 'Loading...'}!</h1>
                     <br />
                     <p>
-                        We appreciate your business!
-                        If you have any questions, please email <a>{sellerEmail ? JSON.stringify(sellerEmail, null, 2) : 'Loading...'}</a>.
+                        We appreciate your business! Please contact <a className="font-bold">{sellerEmail ? JSON.stringify(sellerEmail, null, 2) : 'Loading...'}</a> to coordinate
+                        your exchange.
                     </p>
                 </div>
             </body>

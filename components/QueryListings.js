@@ -66,8 +66,8 @@ const QueryListing = (props) => {
             console.log(place.geometry);
             var lat = place.geometry.lat;
             var lng = place.geometry.lng;
-            listings = listings.filter( (bg) => (bg.lat <= (lat + (1/4))) && (bg.lat >= (lat - (1/4))) );
-            listings = listings.filter( (bg) => (bg.lng <= (lng + (1/3))) && (bg.lat >= (lng - (1/3))) );
+            listings = listings.filter((bg) => (bg.lat <= (lat + (1 / 4))) && (bg.lat >= (lat - (1 / 4))));
+            listings = listings.filter((bg) => (bg.lng <= (lng + (1 / 3))) && (bg.lat >= (lng - (1 / 3))));
         }
 
         setBG(listings);
