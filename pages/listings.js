@@ -19,7 +19,7 @@ function Listings({ boardgames }) {
 }
 
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
     dbConnect();
     const dbres = await Boardgame.find()
     //const res = await axios.get('/api/boardgames')
