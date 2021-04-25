@@ -20,7 +20,7 @@ const MyListings = (props) => {
     return (
         <div className={styles.landing}>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
-            <h1 className="mt-7 w-5/6 mx-auto text-3xl">My Listings</h1>
+            <h1 className="mt-7 w-5/6 mx-auto text-3xl">Myy Listings</h1>
 
             <table className="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
                 <tbody>
