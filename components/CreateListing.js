@@ -103,14 +103,21 @@ export default function CreateListing(props) {
       available: true
     })
 
-    const gameRes = await fetch('/api/boardgames', {
+    /*const gameRes = await fetch('/api/boardgames', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json, text/plain, */*',
+        'Accept': 'application/json, text/plain, *//*',
         'Content-Type': 'application/json'
       },
       body: boardGameData
-    });
+    });*/
+
+    try{
+      const gameRes = await boardGameData.create(boardGameData);
+    }
+   catch (error) {
+     console.log(error);
+   }
 
     console.log("boargame api")
     console.log(gameRes.json());
