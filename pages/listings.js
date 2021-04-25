@@ -22,15 +22,13 @@ function Listings({ boardgames }) {
 export async function getStaticProps(context) {
     dbConnect();
     const dbres = await Boardgame.find()
-    const res = await axios.get('/api/boardgames')
+    //const res = await axios.get('/api/boardgames')
     //console.log(JSON.parse(JSON.stringify(dbres)))
     //console.log(dbres)
 
 
-    //const boardgames = JSON.parse(JSON.stringify(dbres));
-    const boardgames = res.data.data;
-
-    console.log(res.data.data)
+    const boardgames = JSON.parse(JSON.stringify(dbres));
+    //onst boardgames = res.data.data;
 
 
     return { props: { boardgames } }
