@@ -3,7 +3,7 @@ import Link from 'next/link'
 import QueryBar from "../components/QueryBar";
 import styles from '../styles/Home.module.css'
 
-const QueryListing = (props) => {
+function QueryListing(props) {
 
     const [title, setTitle] = useState("");
     const [max_price, setMaxPrice] = useState("");
