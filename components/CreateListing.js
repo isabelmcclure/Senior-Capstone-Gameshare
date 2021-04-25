@@ -10,8 +10,6 @@ import styles from '../styles/Home.module.css'
 
 export default function CreateListing(props) {
 
-  dbConnect();
-
   const router = useRouter();
 
   const [title, setTitle] = useState("");
@@ -115,6 +113,8 @@ export default function CreateListing(props) {
       },
       body: boardGameData
     });*/
+
+    dbConnect();
 
     try{
       const gameRes = await Boardgame.create(boardGameData);
