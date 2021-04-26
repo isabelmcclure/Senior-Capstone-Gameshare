@@ -137,7 +137,7 @@ export default function id({ boardgame }) {
   )
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   dbConnect();
   const dbres = await Boardgame.findById(context.params.id);
   //const res = await axios.get(`/api/boardgames/${context.params.id}`);
@@ -151,7 +151,7 @@ export async function getStaticProps(context) {
 }
 
 // This function gets called at build time
-export async function getStaticPaths() {
+export async function getServerSidePaths() {
   dbConnect();
   // Call an external API endpoint to get posts
   const dbres = await Boardgame.find();
