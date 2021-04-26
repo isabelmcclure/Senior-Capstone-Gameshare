@@ -37,11 +37,27 @@ export default function EditProfileFields(props) {
 
 
 
-        const res = await axios.put(`/api/users/${props.userData._id}`, {
+        /*const res = await axios.put(`/api/users/${props.userData._id}`, {
             username: event.target.username.value,
             location: event.target.location.value,
             img: imageURL
-        })
+        })*/
+
+        const editData = JSON.stringify({
+            username: event.target.username.value,
+            location: event.target.location.value,
+            img: quality,
+            images: imageURL
+          })
+
+        const res = await fetch(`/api/users/${props.userData._id}`, {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json, text/plain, */',
+              'Content-Type': 'application/json'
+            },
+            body: editData
+          });
 
         const result = res.data.data
         console.log(result) 
