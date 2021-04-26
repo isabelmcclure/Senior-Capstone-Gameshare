@@ -22,7 +22,7 @@ export default async (req, res) => {
             },
         ],
         mode: 'payment',
-        success_url: `http://gameshare.vercel.app/success?session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `https://gameshare.vercel.app/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: req.body.path,
         metadata: { productID: req.body.productID, },
     });
