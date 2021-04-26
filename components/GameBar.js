@@ -54,11 +54,11 @@ const GameBar = (props) => {
                     <div className="grid grid-cols-1 divide-y divide-purple-300 w-2/4 h-auto">
                         <div>
                             <h1 className="font-mono inline-block font-extrabold text-blue-700 text-1xl">Quality:</h1>
-                            <p className="font-mono inline-block pl-2 ">{props.boardgame.quality}</p>
+                            <p className="font-mono inline-block pl-2 ">{props.boardgame.quality}/5</p>
                         </div>
                         <div>
                             <h1 className="font-mono inline-block font-extrabold text-blue-700 text-1xl">Price:</h1>
-                            <p className="font-mono inline-block pl-2 ">{props.boardgame.price}</p>
+                            <p className="font-mono inline-block pl-2 ">${props.boardgame.price}</p>
                         </div>
                         <div>
                             <h1 className="font-mono inline-block font-extrabold text-blue-700 text-1xl">Location:</h1>
