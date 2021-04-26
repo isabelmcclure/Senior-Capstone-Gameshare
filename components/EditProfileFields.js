@@ -8,7 +8,7 @@ export default function EditProfileFields(props) {
     const router = useRouter();
     const { data, loading, error } = useAuth();
 
-    const[imageFile, setImageFile] = useState("")
+    const[imageFile, setImageFile] = useState()
     const[imageURL, setImageURL] = useState(data.userD.img)
 
 
@@ -70,7 +70,7 @@ export default function EditProfileFields(props) {
             <form className="mb-6" onSubmit={handleSubmit}>
                 <div className="flex flex-col mb-4">
                     <label className="mb-2 uppercase font-bold text-lg text-grey-darkest">Username</label>
-                    <input className="border py-2 px-3 text-grey-darkest" type="text" id="username" name="username"></input>
+                    <input className="border py-2 px-3 text-grey-darkest" type="text" id="username" name="username" defaultValue={data.userD.username}></input>
                 </div>
                 <div className="flex flex-col mb-4">
                     <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="pictures">Upload Profile Image</label>
@@ -85,7 +85,7 @@ export default function EditProfileFields(props) {
           </div>
                 <div className="flex flex-col mb-4 ">
                     <label className="mb-2 uppercase font-bold text-lg text-grey-darkest">Location</label>
-                    <input className="border py-2 px-3 text-grey-darkest" type="text" id="location" name="location"></input>
+                    <input className="border py-2 px-3 text-grey-darkest" type="text" id="location" name="location" defaultValue={data.userD.location}></input>
                 </div>
                 <button className="block bg-green-500 hover:bg-green-600 text-white uppercase text-lg mx-auto p-4 rounded" type="submit">Submit</button>
             </form>
