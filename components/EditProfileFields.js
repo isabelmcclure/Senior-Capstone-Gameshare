@@ -50,16 +50,13 @@ export default function EditProfileFields(props) {
           })
 
         const res = await fetch(`/api/users/${props.userData._id}`, {
-            method: 'POST',
+            method: 'PUT',
             headers: {
               'Accept': 'application/json, text/plain, */',
               'Content-Type': 'application/json'
             },
             body: editData
           });
-
-        const result = res.data.data
-        console.log(result) 
         router.push('dashboard')
     }
 
