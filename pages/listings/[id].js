@@ -5,13 +5,15 @@ import GameBar from '../../components/GameBar.js'
 import Images from '../../components/Images.js'
 import dbConnect from '../../util/dbConnect'
 import Boardgame from '../../models/boardgame'
+import styles from '../../styles/Home.module.css'
 
 export default function id({ boardgame }) {
 
   //const description = "This is an example board game description. Everything beyond this sentence will be nonsense to fill in the page. Board games have a long tradition in Europe. The oldest records of board gaming in Europe date back to Homer's Iliad (written in the 8th century BC), in which he mentions the Ancient Greek game of Petteia.[15] This game of petteia would later evolve into the Roman Ludus Latrunculorum.[15] Board gaming in ancient Europe was not unique to the Greco-Roman world, with records estimating that the ancient Norse game of Hnefatafl was developed sometime before 400AD.[16] In ancient Ireland, the game of Fidchell or Ficheall, is said to date back to at least 144 AD,[17] though this is likely an anachronism. A fidchell board dating from the 10th century has been uncovered in Co. Westmeath, Ireland.[18]"
   //console.log(boardgame)
   return (
-    <div>
+    <div className={styles.landing}>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
       <GameBar boardgame={boardgame} rate={boardgame.price} product={boardgame.title} id={boardgame._id} ></GameBar>
       <Images boardgame={boardgame}></Images>
     </div>
