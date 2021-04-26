@@ -46,8 +46,7 @@ export default function EditProfileFields(props) {
         const editData = JSON.stringify({
             username: event.target.username.value,
             location: event.target.location.value,
-            img: quality,
-            images: imageURL
+            img: imageURL
           })
 
         const res = await fetch(`/api/users/${props.userData._id}`, {
