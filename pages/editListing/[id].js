@@ -73,7 +73,9 @@ export default function id({ boardgame }) {
       numPlayers: numPlayers,
       location: location,
       ownerID: boardgame.ownerID,
-      available: available
+      available: available,
+      lat: boardgame.lat,
+      lng: boardgame.lng,
     })
 
     const api_route = `http://localhost:3000/api/boardgames/` + boardgame._id;
