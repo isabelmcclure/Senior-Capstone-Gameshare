@@ -104,7 +104,13 @@ export default function id({ boardgame }) {
           </div>
           <div className="flex flex-col mb-4">
             <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="quality">Quality</label>
-            <input className="border py-2 px-3 text-grey-darkest" type="text" name="quality" id="quality" defaultValue={quality} onChange={handleQualityChange} ></input>
+            <select className="border py-2 px-3 text-grey-darkest" name="quality" id="quality" defaultValue={quality} onChange={handleQualityChange} >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
           </div>
           <div className="flex flex-col mb-4">
             <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="pictures">Pictures</label>
