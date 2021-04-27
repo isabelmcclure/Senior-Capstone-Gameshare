@@ -12,7 +12,9 @@ export default function id({ boardgame }) {
   const [quality, setQuality] = useState(boardgame.quality);
   const [location, setLocation] = useState(boardgame.location);
   const [available, setAvailable] = useState(boardgame.available);
-
+  const [genre, setGenre] = useState(boardgame.genre);
+  const [numPlayers, setNumPlayers] = useState(boardgame.numPlayers);
+  
   const router = useRouter()
 
   const handleTitleChange = (e) => {
@@ -58,6 +60,7 @@ export default function id({ boardgame }) {
   const listingUpdate = async (event) => {
     event.preventDefault()
 
+    console.log(boardgame.genre);
     console.log(title);
 
     const boardGameData = JSON.stringify({
@@ -66,8 +69,8 @@ export default function id({ boardgame }) {
       quality: quality,
       img: img,
       price: price,
-      genre: "test genre",
-      numPlayers: 5,
+      genre: genre,
+      numPlayers: numPlayers,
       location: location,
       ownerID: boardgame.ownerID,
       available: available
