@@ -72,25 +72,15 @@ export default function CreateListing(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // coordinates calculation
-    const opencage = require('opencage-api-client');
+      // coordinates calculation
+      const opencage = require('opencage-api-client');
 
-    const geo = await opencage.geocode({ key: 'ece176d4b3894699b2058fa884f5b210', q: location, limit: 1, countrycode: 'us' });
-    //console.log(JSON.stringify(geo));
-    if (geo.status.code === 200) {
-      if (geo.results.length > 0) {
-        var place = geo.results[0];
-        console.log(place.geometry);
-      }
-    } else if (geo.status.code === 402) {
-      console.log('hit free trial daily limit');
-      console.log('become a customer: https://opencagedata.com/pricing');
-    } else {
-      // other possible response codes:
-      // https://opencagedata.com/api#codes
-      console.log('error', geo.status.message);
-    }
-    ///////////////////////////////////////
+      const geo = await opencage.geocode({ key: 'ece176d4b3894699b2058fa884f5b210', q: location, limit: 1, countrycode: 'us' });
+      var place = geo.results[0];
+      console.log(place.geometry);
+      var lat = place.geometry.lat;
+      var lng = place.geometry.lng;
+      ///////////////////////////////////////
 
     const boardGameData = JSON.stringify({
       title: title,
@@ -102,8 +92,8 @@ export default function CreateListing(props) {
       numPlayers: numPlayers,
       ownerID: email,
       location: location,
-      lat: place.geometry.lat,
-      lng: place.geometry.lng,
+      lat: lat,
+      lng: lng,
       available: true
     })
 
