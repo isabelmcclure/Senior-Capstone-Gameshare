@@ -22,7 +22,7 @@ const QueryBar = (props) => {
 
             <label className="p-3">
                 <div className="font-extrabold text-blue-700 text-xl text-center">Max Price:</div>
-                <input className= "rounded-full p-1" type="number" min="0" name="price" id="price" placeholder="$1" onChange={props.handlePriceQuery}></input>
+                <input className= "rounded-full p-1" type="number" min="0" step="0.01" name="price" id="price" placeholder="$1" onChange={props.handlePriceQuery}></input>
             </label>
 
             <label className="p-3">

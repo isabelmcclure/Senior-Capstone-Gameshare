@@ -124,7 +124,7 @@ export default function id({ boardgame }) {
           </div>
           <div className="flex flex-col mb-4">
             <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="price">Price</label>
-            <input className="border py-2 px-3 text-grey-darkest" type="text" name="price" id="price" defaultValue={price} onChange={handlePriceChange}></input>
+            <input className="border py-2 px-3 text-grey-darkest" type="number" min="0" step="0.01" name="price" id="price" defaultValue={price} onChange={handlePriceChange}></input>
           </div>
           <div className="flex flex-col mb-4">
             <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="location">Location</label>
@@ -132,7 +132,10 @@ export default function id({ boardgame }) {
           </div>
           <div className="flex flex-col mb-4">
             <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="location">Available</label>
-            <input className="border py-2 px-3 text-grey-darkest" type="text" name="available" id="available" defaultValue={available} onChange={handleAvailableChange}></input>
+            <select className="border py-2 px-3 text-grey-darkest" type="text" name="available" id="available" defaultValue={available} onChange={handleAvailableChange}>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
           </div>
           <div className="flex flex-col mb-4">
             <button className="block bg-green-500 hover:bg-green-600 text-white uppercase text-lg mx-auto p-4 rounded" type="submit">Edit Listing</button>

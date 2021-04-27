@@ -169,7 +169,7 @@ export default function CreateListing(props) {
           </div>
           <div className="flex flex-col mb-4">
             <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="price">Price</label>
-            <input className="border py-2 px-3 text-grey-darkest" type="text" name="price" id="price" onChange={handlePriceChange}></input>
+            <input className="border py-2 px-3 text-grey-darkest" type="number" min="0" step="0.01" name="price" id="price" onChange={handlePriceChange}></input>
           </div>
           <div className="flex flex-col mb-4">
             <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="genre">Genre</label>
@@ -177,7 +177,7 @@ export default function CreateListing(props) {
           </div>
           <div className="flex flex-col mb-4">
             <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="numPlayers">Number of Players</label>
-            <input className="border py-2 px-3 text-grey-darkest" type="text" name="numPlayers" id="numPlayers" onChange={handleNumPlayersChange}></input>
+            <input className="border py-2 px-3 text-grey-darkest" type="number" min="0" step="0.01" name="numPlayers" id="numPlayers" onChange={handleNumPlayersChange}></input>
           </div>
           <div className="flex flex-col mb-4">
             <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="location">Location</label>
