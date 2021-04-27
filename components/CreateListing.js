@@ -136,14 +136,14 @@ export default function CreateListing(props) {
             <input className="border py-2 px-3 text-grey-darkest" type="text" name="description" id="description" onChange={handleDescriptionChange}></input>
           </div>
           <div className="flex flex-col mb-4">
-            <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="quality">Quality</label>
+            <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="quality">Condition</label>
             {/*<input className="border py-2 px-3 text-grey-darkest" type="text" name="quality" id="quality" onChange={handleQualityChange}></input>*/}
             <select className="border py-2 px-3 text-grey-darkest" id="quality" name="quality" onChange={handleQualityChange}>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
+              <option value="5">5 - Excellent</option>
+              <option value="4">4 - Great</option>
+              <option value="3">3 - Good</option>
+              <option value="2">2 - Okay</option>
+              <option value="1">1 - Poor</option>
             </select>
           </div>
           <div className="flex flex-col mb-4">
@@ -162,7 +162,7 @@ export default function CreateListing(props) {
             <input className="border py-2 px-3 text-grey-darkest" type="number" min="0" step="0.01" name="price" id="price" onChange={handlePriceChange}></input>
           </div>
           <div className="flex flex-col mb-4">
-            <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="genre">Genre</label>
+            <label className="mb-2 uppercase font-bold text-lg text-grey-darkest" for="genre">Tags</label>
             <input className="border py-2 px-3 text-grey-darkest" type="text" name="genre" id="genre" onChange={handleGenreChange}></input>
           </div>
           <div className="flex flex-col mb-4">

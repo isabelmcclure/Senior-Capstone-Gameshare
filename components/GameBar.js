@@ -53,7 +53,7 @@ const GameBar = (props) => {
 
                     <div className="grid grid-cols-1 divide-y divide-purple-300 w-2/4 h-auto">
                         <div>
-                            <h1 className="inline-block font-extrabold text-blue-700 text-1xl">Quality:</h1>
+                            <h1 className="inline-block font-extrabold text-blue-700 text-1xl">Condition:</h1>
                             <p className="inline-block pl-2 ">{props.boardgame.quality}/5</p>
                         </div>
                         <div>

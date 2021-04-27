@@ -33,7 +33,7 @@ const MyListings = (props) => {
                 <tbody>
                     <tr className="text-left border-b-2 border-gray-300">
                         <th className="px-4 py-3">Game</th>
-                        <th className="px-4 py-3">Genre</th>
+                        <th className="px-4 py-3">Tags</th>
                         <th className="px-4 py-3">Players</th>
                         <th className="px-4 py-3">Price</th>
                         <th className="px-4 py-3">Available</th>
