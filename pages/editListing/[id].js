@@ -63,6 +63,15 @@ export default function id({ boardgame }) {
     console.log(boardgame.genre);
     console.log(title);
 
+    // coordinates calculation
+    const opencage = require('opencage-api-client');
+
+    const geo = await opencage.geocode({ key: 'ece176d4b3894699b2058fa884f5b210', q: location, limit: 1, countrycode: 'us' });
+    var place = geo.results[0];
+    console.log(place.geometry);
+    var lat = place.geometry.lat;
+    var lng = place.geometry.lng;
+
     const boardGameData = JSON.stringify({
       title: title,
       description: description,
@@ -72,10 +81,10 @@ export default function id({ boardgame }) {
       genre: genre,
       numPlayers: numPlayers,
       location: location,
+      lat: lat,
+      lng: lng,
       ownerID: boardgame.ownerID,
-      available: available,
-      lat: boardgame.lat,
-      lng: boardgame.lng,
+      available: available
     })
 
     const api_route = `http://localhost:3000/api/boardgames/` + boardgame._id;
