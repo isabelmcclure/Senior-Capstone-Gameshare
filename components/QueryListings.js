@@ -51,7 +51,7 @@ const QueryListing = (props) => {
         }
 
         if (genre != "") {
-            listings = listings.filter((bg) => bg.genre === genre);
+            listings = listings.filter((bg) => bg.genre.toLowerCase().includes(genre.toLowerCase()));
         }
 
         if (max_players != "") {
