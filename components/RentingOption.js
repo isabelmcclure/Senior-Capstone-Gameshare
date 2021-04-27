@@ -34,7 +34,7 @@ export default function RentingOption(props) {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: JSON.stringify({ title: props.product, price: props.rate + '00', path: window.location.href, productID: props.id })
+      body: JSON.stringify({ title: props.product, price: rate, path: window.location.href, productID: props.id })
     });
 
     const session = await response.json();
