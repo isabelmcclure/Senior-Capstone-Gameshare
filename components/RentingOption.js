@@ -20,6 +20,13 @@ export default function RentingOption(props) {
     // Get Stripe.js instance
     const stripe = await stripePromise;
 
+    const rate;
+    if (!props.rate.includes(".")) {
+      rate = props.rate + '00'
+    }
+    else {
+      rate = props.rate
+    }
 
     // Call your backend to create the Checkout Session
     const response = await fetch('../api/checkout/create-checkout-session', {
