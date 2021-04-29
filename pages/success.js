@@ -57,6 +57,15 @@ export default function Success({ props }) {
                         We appreciate your business! Please contact <a className="font-bold">{sellerEmail ? JSON.stringify(sellerEmail, null, 2) : 'Loading...'}</a> to coordinate
                         your exchange.
                     </p>
+
+                    <div className="pt-6">
+                       <span>
+                           <div className="bg-red-500 text-xs font-black p-2 rounded-lg inline-block text-white">WARNING:</div>
+                           <p className="mt-1">There are potential precautions one should take when meeting up with strangers! We strongly encourage you to <span className="text-purple-600 font-bold">bring a person along with you</span>, 
+                           or <span className="text-purple-600 font-bold">let a trusted friend/family member know</span> at the very minimum!</p>
+                       </span>
+                    </div>
+
                 </div>
             </body>
         </div>
